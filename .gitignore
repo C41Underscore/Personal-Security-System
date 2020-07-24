@@ -1,4 +1,5 @@
 peepsdetails.csv
 personaldeets.txt
 test-image.jpg
-credentials.json
+client_secrets.json
+__pycache__/
