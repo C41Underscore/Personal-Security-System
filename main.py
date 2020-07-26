@@ -1,7 +1,9 @@
-import google_drive_auth
-import google_drive_upload
+import google_drive_handler
+import email_sender
+import yagmail
 from esp32_handler import esp32CamInterface
 from time import sleep
+
 
 #TODO - Create the main framework of the program, going to have to wait for better internet to use the ESPs
 #TODO - Structure the code to make it efficient and readable
@@ -14,13 +16,26 @@ from time import sleep
 #TODO - Create a script to empty the google drive file regulary to prevent it from becoming full
 
 
+def test_trigger(yagmail_interface, drive_interface, attachment, receiving_emails=()):
+    # email_sender.send_email(
+    #     yagmail_interface,
+    #     receiving_emails,
+    #     "OOOOOOWWEEEEEE",
+    #     "Bitches have been detected :triumph:",
+    #     attachment
+    # )
+    google_drive_handler.upload(drive_interface, attachment, attachment)
+
+
 def main(testing):
-    drive = google_drive_auth.authenticate()
-    esp32cam = esp32CamInterface(1, "${IP_ADDRESS}", "Living Room")
-    if testing:
-        for i in range(0, 10):
-            esp32cam.takeImage(False)
-            sleep(5)
+    drive_interface = google_drive_handler.authenticate()
+    email, receiving_emails = email_sender.initialise_yagmail()
+    test_trigger(email, drive_interface, "test-image.jpg")
+    #esp32cam = esp32CamInterface(1, "${IP_ADDRESS}", "Living Room")
+    #if testing:
+    #    for i in range(0, 10):
+    #        esp32cam.takeImage(False)
+    #        sleep(5)
 
 
 if __name__ == "__main__":
