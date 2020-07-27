@@ -4,3 +4,4 @@ test-image.jpg
 client_secrets.json
 __pycache__/
 pyvenv.cfg
+.env

@@ -2,6 +2,7 @@ from PIL import Image
 import urllib.request
 from string import Template
 
+
 class esp32CamInterface:
 
     template_url = Template("http://${ip_address}/${image_type}")
