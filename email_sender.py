@@ -1,4 +1,5 @@
 import yagmail
+from decouple import config, Csv
 
 
 def send_email(yag, receiver, subject, body, *attachments):
@@ -13,18 +14,5 @@ def send_email(yag, receiver, subject, body, *attachments):
 
 
 def initialise_yagmail():
-    email = input("Enter email> ")
-    yag = yagmail.SMTP(email)
-    receiving_emails = []
-    next_email = ""
-    while next_email != "/done":
-        print("Current receiving emails:", ", ".join(receiving_emails))
-        next_email = input("Enter next receiving email(enter /done to finish)> ")
-        if next_email != "" and next_email != "/done":#Insert regex here
-            receiving_emails.append(next_email)
-    return yag, receiving_emails
+    return yagmail.SMTP(config("SENDING_EMAIL")), config("RECEIVING_EMAILS", cast=Csv())
     # send_email(yag, receiving_emails, "The president stole my cheese :0", "but he didn't take the crackers ;)", "test-image.jpg")
-
-y, r = initialise_yagmail()
-send_email(y, r, "chippty", "choppty", yagmail.inline("test-image.jpg"))
-

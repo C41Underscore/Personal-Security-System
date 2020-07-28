@@ -4,7 +4,14 @@ from pydrive2.drive import GoogleDrive
 
 def authenticate():
     gauth = GoogleAuth()
-    gauth.LocalWebserverAuth()
+    gauth.LoadCredentialsFile("google_credentials.txt")
+    if gauth.credentials is None:
+        gauth.LocalWebserverAuth()
+    elif gauth.access_token_expired:
+        gauth.Refresh()
+    else:
+        gauth.Authorize()
+    gauth.SaveCredentialsFile("google_credentials.txt")
     return GoogleDrive(gauth)
 
 

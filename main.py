@@ -17,20 +17,20 @@ from time import sleep
 
 
 def test_trigger(yagmail_interface, drive_interface, attachment, receiving_emails=()):
-    # email_sender.send_email(
-    #     yagmail_interface,
-    #     receiving_emails,
-    #     "OOOOOOWWEEEEEE",
-    #     "Bitches have been detected :triumph:",
-    #     attachment
-    # )
+    email_sender.send_email(
+        yagmail_interface,
+        receiving_emails,
+        "OOOOOOWWEEEEEE",
+        "Bitches have been detected :triumph:",
+        attachment
+    )
     google_drive_handler.upload(drive_interface, attachment, attachment)
 
 
 def main(testing):
     drive_interface = google_drive_handler.authenticate()
     email, receiving_emails = email_sender.initialise_yagmail()
-    test_trigger(email, drive_interface, "test-image.jpg")
+    test_trigger(email, drive_interface, "test-image.jpg", receiving_emails=receiving_emails)
     #esp32cam = esp32CamInterface(1, "${IP_ADDRESS}", "Living Room")
     #if testing:
     #    for i in range(0, 10):
