@@ -1,8 +1,9 @@
 import google_drive_handler
 import email_sender
 import yagmail
-from esp32_handler import esp32CamInterface
+from esp32_handler import ESP32CamInterface
 from time import sleep
+from datetime import timedelta
 
 
 #TODO - Create the main framework of the program, going to have to wait for better internet to use the ESPs
@@ -16,6 +17,10 @@ from time import sleep
 #TODO - Create a script to empty the google drive file regulary to prevent it from becoming full
 
 
+start_time = timedelta(hours=0, minutes=0, seconds=0)
+end_time = timedelta(hours=7, minutes=30, seconds=0)
+
+
 def test_trigger(yagmail_interface, drive_interface, attachment, receiving_emails=()):
     email_sender.send_email(
         yagmail_interface,
@@ -24,7 +29,7 @@ def test_trigger(yagmail_interface, drive_interface, attachment, receiving_email
         "Bitches have been detected :triumph:",
         attachment
     )
-    google_drive_handler.upload(drive_interface, attachment, attachment)
+    google_drive_handler.upload(drive_interface, attachment)
 
 
 def main(testing):

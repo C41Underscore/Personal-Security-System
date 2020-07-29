@@ -2,6 +2,10 @@ from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
 
 
+def refresh_drive():
+    pass
+
+
 def authenticate():
     gauth = GoogleAuth()
     gauth.LoadCredentialsFile("google_credentials.txt")
@@ -15,10 +19,13 @@ def authenticate():
     return GoogleDrive(gauth)
 
 
-def upload(drive, filename, filepath):
-    file1 = drive.CreateFile({"title": filename})
+def upload(drive, filepath):
+    file_list = drive.ListFile({"q": "'root' in parents and trashed=false"}).GetList()
+    for file in file_list:
+        print(file["title"], file["id"])
+    file1 = drive.CreateFile({"title": "chungus"})
     file1.SetContentFile(filepath)
-    file1.Upload()
+    #file1.Upload()
 
 
 if __name__ == "__main__":
