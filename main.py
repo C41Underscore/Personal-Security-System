@@ -1,9 +1,12 @@
-import google_drive_handler
+from google_drive_handler import DriveHandler
 import email_sender
 import yagmail
 from esp32_handler import ESP32CamInterface
 from time import sleep
 from datetime import timedelta
+import PIL
+from time_handler import get_formatted_time
+from decouple import config
 
 
 #TODO - Create the main framework of the program, going to have to wait for better internet to use the ESPs
@@ -21,27 +24,15 @@ start_time = timedelta(hours=0, minutes=0, seconds=0)
 end_time = timedelta(hours=7, minutes=30, seconds=0)
 
 
-def test_trigger(yagmail_interface, drive_interface, attachment, receiving_emails=()):
-    email_sender.send_email(
-        yagmail_interface,
-        receiving_emails,
-        "OOOOOOWWEEEEEE",
-        "Bitches have been detected :triumph:",
-        attachment
-    )
-    google_drive_handler.upload(drive_interface, attachment)
-
-
-def main(testing):
-    drive_interface = google_drive_handler.authenticate()
+def main():
+    drive_interface = DriveHandler()
     email, receiving_emails = email_sender.initialise_yagmail()
-    test_trigger(email, drive_interface, "test-image.jpg", receiving_emails=receiving_emails)
-    #esp32cam = esp32CamInterface(1, "${IP_ADDRESS}", "Living Room")
-    #if testing:
-    #    for i in range(0, 10):
-    #        esp32cam.takeImage(False)
-    #        sleep(5)
+    cam_addresses = config("ESPCAM_IP_ADDRESSES")
+    esp32cam = ESP32CamInterface(1, cam_addresses[0], "Living Room")
+    image, current_time = esp32cam.take_image(False)
+    image.save("%s.jpg" % current_time)
+    drive_interface.upload(get_formatted_time(True), current_time)
 
 
 if __name__ == "__main__":
-    main(True)
+    main()

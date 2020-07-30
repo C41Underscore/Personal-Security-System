@@ -1,5 +1,11 @@
 import time
-from datetime import timedelta
+from datetime import timedelta, datetime
+
+
+def get_formatted_time(use_date):
+    if use_date:
+        return datetime.now().strftime("%Y-%m-%d")
+    return datetime.now().strftime("%H%M%S")
 
 
 class TimeHandler:
