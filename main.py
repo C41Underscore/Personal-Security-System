@@ -7,6 +7,7 @@ from datetime import timedelta
 import PIL
 from time_handler import get_formatted_time
 from decouple import config
+import schedule
 
 
 #TODO - Create the main framework of the program, going to have to wait for better internet to use the ESPs
@@ -34,5 +35,11 @@ def main():
     drive_interface.upload(get_formatted_time(True), current_time)
 
 
+def print_time():
+    print(get_formatted_time(False))
+
+
 if __name__ == "__main__":
-    main()
+    schedule.every(1).seconds.do(print_time)
+    while True:
+        schedule.run_pending()
