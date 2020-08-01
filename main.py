@@ -1,12 +1,17 @@
 from google_drive_handler import DriveHandler
-import email_sender
+from time_handler import TimeHandler
+from email_sender import EmailHandler
+from network_handler import MACHandler
+from time_handler import get_current_date
+from sys import exit
+from time import sleep
 import yagmail
-from esp32_handler import ESP32CamInterface
+from esp32_handler import CameraCollection
 from time import sleep
 from datetime import timedelta
 import PIL
 from time_handler import get_formatted_time
-from decouple import config
+from decouple import config, Csv
 import schedule
 
 
@@ -21,25 +26,28 @@ import schedule
 #TODO - Create a script to empty the google drive file regulary to prevent it from becoming full
 
 
-start_time = timedelta(hours=0, minutes=0, seconds=0)
-end_time = timedelta(hours=7, minutes=30, seconds=0)
-
-
 def main():
-    drive_interface = DriveHandler()
-    email, receiving_emails = email_sender.initialise_yagmail()
-    cam_addresses = config("ESPCAM_IP_ADDRESSES")
-    esp32cam = ESP32CamInterface(1, cam_addresses[0], "Living Room")
-    image, current_time = esp32cam.take_image(False)
-    image.save("%s.jpg" % current_time)
-    drive_interface.upload(get_formatted_time(True), current_time)
+    #Initialse the main system objects
+    drive = DriveHandler()
+    timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
+    emailer = EmailHandler()
+    network_checker = MACHandler()
+    camera_ips = list(zip(config("ESPCAM_IP_ADDRESSES", cast=Csv()), config("ESPCAM_LOCATIONS", cast=Csv())))
+    cameras = CameraCollection(*camera_ips)
+    #Schedule the object tasks
+    schedule.every().monday.do(drive.refresh_drive, get_current_date())
+    while True:
+        schedule.run_pending()
+        print("Checking time...")
+        timer_check = timer.check_time()
+        print("Checking network...")
+        network_check = network_checker.check_network()
+        if network_check:
+            print("There is no cheese in the house :0")
+        sleep(1)
 
-
-def print_time():
-    print(get_formatted_time(False))
+    #add esp32 handlers later
 
 
 if __name__ == "__main__":
-    schedule.every(1).seconds.do(print_time)
-    while True:
-        schedule.run_pending()
+    main()

@@ -8,6 +8,10 @@ def get_formatted_time(use_date):
     return datetime.now().strftime("%H%M%S")
 
 
+def get_current_date():
+    return datetime.now().date()
+
+
 class TimeHandler:
 
     def __init__(self, time_start, time_end):

@@ -2,17 +2,17 @@ import yagmail
 from decouple import config, Csv
 
 
-def send_email(yag, receiver, subject, body, *attachments):
-    contents = list(attachments)
-    contents.insert(0, body)
-    yag.send(
-        to=receiver,
-        subject=subject,
-        contents=contents
-    )
-    print("Email sent to %s" % ", ".join(receiver))
+class EmailHandler:
 
+    def __init__(self):
+        self.yag = yagmail.SMTP(config("SENDING_EMAIL"))
+        self.receiving_emails = config("RECEIVING_EMAILS", cast=Csv())
 
-def initialise_yagmail():
-    return yagmail.SMTP(config("SENDING_EMAIL")), config("RECEIVING_EMAILS", cast=Csv())
-    # send_email(yag, receiving_emails, "The president stole my cheese :0", "but he didn't take the crackers ;)", "test-image.jpg")
+    def send_email(self, subject, body, *attachments):
+        contents = list(attachments)
+        contents.insert(0, body)
+        self.yag.send(
+            to=self.receiving_emails,
+            subject=subject,
+            contents=contents
+        )

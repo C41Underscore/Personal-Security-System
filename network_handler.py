@@ -28,6 +28,3 @@ class MACHandler:
             return True
         else:
             return False
-
-
-print(MACHandler().check_network())
