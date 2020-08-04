@@ -13,6 +13,7 @@ import PIL
 from time_handler import get_formatted_time
 from decouple import config, Csv
 import schedule
+from os import remove
 
 
 #TODO - Create the main framework of the program, going to have to wait for better internet to use the ESPs
@@ -29,24 +30,31 @@ import schedule
 def main():
     #Initialse the main system objects
     drive = DriveHandler()
-    timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
+    # timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
     emailer = EmailHandler()
-    network_checker = MACHandler()
-    camera_ips = list(zip(config("ESPCAM_IP_ADDRESSES", cast=Csv()), config("ESPCAM_LOCATIONS", cast=Csv())))
-    cameras = CameraCollection(*camera_ips)
-    #Schedule the object tasks
-    schedule.every().monday.do(drive.refresh_drive, get_current_date())
-    while True:
-        schedule.run_pending()
-        print("Checking time...")
-        timer_check = timer.check_time()
-        print("Checking network...")
-        network_check = network_checker.check_network()
-        if network_check:
-            print("There is no cheese in the house :0")
-        sleep(1)
+    # network_checker = MACHandler()
+    # camera_ips = list(zip(config("ESPCAM_IP_ADDRESSES", cast=Csv()), config("ESPCAM_LOCATIONS", cast=Csv())))
+    print("Creating Camera Collection...")
+    cameras = CameraCollection(1)
+    print("Taking photo...")
+    image, time_taken = cameras.check_cams()
+    print("Saving photo...")
+    image.save(time_taken + ".jpg")
+    print("Uploading photo...")
+    drive.upload(get_formatted_time(True), time_taken+".jpg")
+    print("Removing file from local drive...")
 
-    #add esp32 handlers later
+    #Schedule the object tasks
+    # schedule.every().monday.do(drive.refresh_drive, get_current_date())
+    # while True:
+    #     schedule.run_pending()
+    #     print("Checking time...")
+    #     timer_check = timer.check_time()
+    #     print("Checking network...")
+    #     network_check = network_checker.check_network()
+    #     if network_check:
+    #         print("There is no cheese in the house :0")
+    #     sleep(1)
 
 
 if __name__ == "__main__":

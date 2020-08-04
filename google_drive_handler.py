@@ -54,6 +54,5 @@ class DriveHandler:
             directory.Upload()
             folder_id = directory["id"]
         new_file = self.drive.CreateFile({"title": filename, "parents": [{"id": folder_id}]})
-        filename = "test-image.jpg"
         new_file.SetContentFile(filename)
         new_file.Upload()
