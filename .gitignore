@@ -6,3 +6,4 @@ __pycache__/
 pyvenv.cfg
 .env
 google_credentials.txt
+*.log

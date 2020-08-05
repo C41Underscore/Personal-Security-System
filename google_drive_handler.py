@@ -1,6 +1,6 @@
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
-from time_handler import get_current_date
+from time_handler import get_current_date, get_formatted_time
 from datetime import timedelta
 
 
@@ -39,6 +39,7 @@ class DriveHandler:
         for folder in folders_to_trash:
             folder = self.drive.CreateFile({"id": folder})
             folder.Trash()
+        return
 
     def upload(self, directory, filename):
         folder_id = None
@@ -56,3 +57,34 @@ class DriveHandler:
         new_file = self.drive.CreateFile({"title": filename, "parents": [{"id": folder_id}]})
         new_file.SetContentFile(filename)
         new_file.Upload()
+        return
+
+    def upload_log(self):
+        folder_list = self.drive.ListFile(
+            {"q": "mimeType='application/vnd.google-apps.folder' and trashed=false"}
+        ).GetList()
+        log_folder = None
+        for folder in folder_list:
+            if folder["title"] == "logs":
+                log_folder = self.drive.CreateFile({"id": folder["id"]})
+                break
+        new_log = self.drive.CreateFile(
+            {"title": "%s.log" % get_formatted_time(True),
+             "parents": [{"id": log_folder["id"]}]}
+        )
+        new_log.SetContentFile("app.log")
+        new_log.Upload()
+        return
+
+    def refresh_logs(self, current_date):
+        log_list = self.drive.ListFile(
+            {"q": "title='*.log' and trashed=false"}
+        ).GetList()
+        for log in log_list:
+            print(log["title"])
+
+
+if __name__ == "__main__":
+    drive = DriveHandler()
+    drive.upload_log()
+    drive.refresh_logs(get_current_date())

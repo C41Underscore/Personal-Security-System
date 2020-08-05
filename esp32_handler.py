@@ -3,7 +3,7 @@ import urllib.request
 from string import Template
 from time_handler import get_formatted_time
 import socket
-import socketserver
+import logging
 
 
 class ESP32CamInterface:
@@ -14,7 +14,6 @@ class ESP32CamInterface:
         self.id = cam_num
         self.ip_address = ip_address
         self.cam_socket = cam_socket
-        #self.cam_socket.setblocking(flag=0)
 
     def __str__(self):
         return "Camera: %d, IP address: %s" % (self.id, self.ip_address)
@@ -40,23 +39,21 @@ class CameraCollection:
         self.is_active = False
         self.camera_interfaces = []
         cur_no_cams = 0
+        logging.debug("Creating listening socket.")
         connection_socket = socket.socket()
-        connection_socket.bind(("0.0.0.0", 8080))
+        host, port = ("0.0.0.0", 8080)
+        logging.debug("Binding socket to address %s, on socket %d." % (host, port))
+        connection_socket.bind((host, port))
         connection_socket.listen()
         while True:
             cam_sock, cam_addr = connection_socket.accept()
             cur_no_cams += 1
             self.camera_interfaces.append(ESP32CamInterface(cur_no_cams, cam_addr[0], cam_sock))
-            print(cam_addr)
+            logging.info("Camera connected to with IP address %s" % cam_addr[0])
             if cur_no_cams == number_of_cams:
                 break
+        logging.debug("Closing listening socket.")
         connection_socket.close()
-
-    # def handle(self):
-    #     self.data = self.request.recv(1024).strip()
-    #     print("{} wrote:".format(self.client_address[0]))
-    #     print(self.data)
-    #     self.request.sendall(self.data.upper())
 
     def activate_cams(self):
         self.is_active = True
