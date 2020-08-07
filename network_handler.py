@@ -1,6 +1,7 @@
 import subprocess
 from getmac import get_mac_address
 from decouple import config, Csv
+import logging
 
 
 class MACHandler:
@@ -11,6 +12,7 @@ class MACHandler:
     def check_network(self):
         count = 1
         discovered_devices = []
+        logging.debug("Scanning network for connected devices...")
         network_scan = subprocess.Popen(["nmap -sn 192.168.0.0/24"], shell=True, stdout=subprocess.PIPE)
         with network_scan.stdout as scan:
             for line in scan:
@@ -18,13 +20,19 @@ class MACHandler:
                     try:
                         discovered_devices.append(line.decode("utf-8").strip("\n").split()[5])
                     except IndexError:
-                        print("Error fetching details of device")
+                        logging.error(
+                            "Couldn't get details of device, line returned was %s" % line.decode("utf-8").strip("\n")
+                        )
                 count += 1
         discovered_devices.pop()
+        logging.debug("Converting IP addresses to MAC addresses...")
         discovered_devices = set([get_mac_address(ip=i[1:len(i)-1]) for i in discovered_devices])
         if None in discovered_devices:
             discovered_devices.remove(None)
-        if self.mac_list.intersection(discovered_devices).__len__() == 0:
+        device_intersection_cardinality = self.mac_list.intersection(discovered_devices).__len__()
+        if device_intersection_cardinality == 0:
+            logging.info("All necessary devices are not connected to the network.")
             return True
         else:
+            logging.info("%d devices connected to the network." % device_intersection_cardinality)
             return False

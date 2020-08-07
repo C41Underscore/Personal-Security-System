@@ -19,6 +19,7 @@ class ESP32CamInterface:
         return "Camera: %d, IP address: %s" % (self.id, self.ip_address)
 
     def take_image(self, high_quality):
+        logging.debug("Taking image with camera %d, IP address %s" % (self.id, self.ip_address))
         current_time = get_formatted_time(False)
         if high_quality:
             image = Image.open(urllib.request.urlopen(ESP32CamInterface.template_url.substitute(
@@ -30,6 +31,7 @@ class ESP32CamInterface:
                 ip_address=self.ip_address,
                 image_type="cam-lo.jpg"
             )))
+        logging.debug("Image quality: %s" % "High" if high_quality else "Low")
         return image, current_time
 
 
@@ -44,6 +46,7 @@ class CameraCollection:
         host, port = ("0.0.0.0", 8080)
         logging.debug("Binding socket to address %s, on socket %d." % (host, port))
         connection_socket.bind((host, port))
+        logging.debug("Listening for incoming requests.")
         connection_socket.listen()
         while True:
             cam_sock, cam_addr = connection_socket.accept()
@@ -56,9 +59,12 @@ class CameraCollection:
         connection_socket.close()
 
     def activate_cams(self):
+        logging.debug("CameraCollection.is_active=True.")
+        logging.info("System activated.")
         self.is_active = True
 
     def check_cams(self):
+        logging.info("Checking cameras for detected movement...")
         return self.camera_interfaces[0].take_image(False)
 
 

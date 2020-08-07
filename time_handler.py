@@ -1,5 +1,6 @@
 import time
 from datetime import timedelta, datetime
+import logging
 
 
 def get_formatted_time(use_date):
@@ -19,6 +20,7 @@ class TimeHandler:
         self.end = time_end
 
     def check_time(self):
+        logging.info("Checking current time...")
         current_time = time.localtime()
         current_time = timedelta(hours=current_time.tm_hour, minutes=current_time.tm_min, seconds=current_time.tm_sec)
         if self.start < current_time < self.end:

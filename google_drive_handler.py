@@ -2,6 +2,8 @@ from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
 from time_handler import get_current_date, get_formatted_time
 from datetime import timedelta
+from os import remove
+import logging
 
 
 class DriveHandler:
@@ -19,6 +21,7 @@ class DriveHandler:
         self.drive = GoogleDrive(gauth)
 
     def refresh_drive(self, current_date):
+        logging.info("Refreshing the image contents of the drive...")
         folder_list = self.drive.ListFile(
             {"q": "mimeType='application/vnd.google-apps.folder' and trashed=true"}
         ).GetList()
@@ -42,6 +45,7 @@ class DriveHandler:
         return
 
     def upload(self, directory, filename):
+        logging.info("%s is being uploaded to the drive in folder %s." % (filename, directory))
         folder_id = None
         folder_list = self.drive.ListFile(
             {"q": "title='%s' and mimeType='application/vnd.google-apps.folder' and trashed=false" % directory}
@@ -60,6 +64,7 @@ class DriveHandler:
         return
 
     def upload_log(self):
+        logging.debug("Uploading the latest logs to the drive...")
         folder_list = self.drive.ListFile(
             {"q": "mimeType='application/vnd.google-apps.folder' and trashed=false"}
         ).GetList()
@@ -74,9 +79,11 @@ class DriveHandler:
         )
         new_log.SetContentFile("app.log")
         new_log.Upload()
+        remove("app.log")
         return
 
     def refresh_logs(self, current_date):
+        logging.info("Refreshing the logs on the drive...")
         log_list = self.drive.ListFile(
             {"q": "title='*.log' and trashed=false"}
         ).GetList()

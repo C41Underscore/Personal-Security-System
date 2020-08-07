@@ -17,15 +17,12 @@ from os import remove
 import logging
 
 
-# TODO - Create the main framework of the program, going to have to wait for better internet to use the ESPs
 # TODO - Structure the code to make it efficient and readable
-# TODO - Create a test set of photos to test google drive uploads
-# TODO - Play around with pydrive and get photo uploads working
-# TODO - Play around with pydrive and get video upload working (use opencv and test with webcam)
 # TODO - Plan how the system will be managed.  What will trigger cameras, what extra physical components will be needed, and how will the camera be maintained
-# TODO - Plan how the file system will be organised
 # TODO - Get email notifications working for specific triggers (TBD)
-# TODO - Create a script to empty the google drive file regulary to prevent it from becoming full
+# TODO - Get interactions between ESPs and program working via sockets
+# TODO - Create a socket fail safe, if the internet goes down they need to be able to reconnect without rebooting the entire system
+# TODO - Get motion sensors and get it interacting with the ESPs, and sending data via socket
 
 
 def main():
@@ -46,6 +43,7 @@ def main():
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     schedule.every().monday.do(drive.refresh_logs, get_current_date())
     schedule.every().day.do(drive.upload_log)
+    schedule.every().day.at("23:59").do(emailer)
     while True:
         schedule.run_pending()
         logging.info("Checking the timer...")
@@ -63,4 +61,5 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    emailer = EmailHandler()
+    emailer.email_logs()
