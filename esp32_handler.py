@@ -34,6 +34,18 @@ class ESP32CamInterface:
         logging.debug("Image quality: %s" % "High" if high_quality else "Low")
         return image, current_time
 
+    def check_camera(self):
+        data = self.cam_socket.recv(1024)
+        if data.__len__() == 0:
+            return None
+        else:
+            data = data.decode("utf-8")
+            if data == "BITCHES DETECTED :0":
+                logging.info("Camera %d detected movement, taking image now!" % self.id)
+
+    def change_camera_state(self, new_state):
+        self.cam_socket.send("Time to get snappy:triumph:" if new_state else "Behave!")
+
 
 class CameraCollection:
 
@@ -58,15 +70,22 @@ class CameraCollection:
         logging.debug("Closing listening socket.")
         connection_socket.close()
 
-    def activate_cams(self):
-        logging.debug("CameraCollection.is_active=True.")
-        logging.info("System activated.")
-        self.is_active = True
+    def set_system_state(self, new_state):
+        self.is_active = new_state
+        for camera in self.camera_interfaces:
+            camera.change_camera_state(new_state)
+        logging.debug("CameraCollection.is_active=%s." % self.is_active)
+        logging.info("System activated." if self.is_active else "System deactivated.")
 
     def check_cams(self):
-        logging.info("Checking cameras for detected movement...")
-        return self.camera_interfaces[0].take_image(False)
+        while True:
+            if self.is_active:
+                logging.info("Checking cameras for detected movement...")
+                for camera in self.camera_interfaces:
+                    camera.check_camera()
 
 
 if __name__ == "__main__":
-    CameraCollection(1)
+    cam_coll = CameraCollection(1)
+    for _ in range(100):
+        cam_coll.check_cams()

@@ -3,18 +3,12 @@ from time_handler import TimeHandler
 from email_sender import EmailHandler
 from network_handler import MACHandler
 from time_handler import get_current_date
-from sys import exit
-from time import sleep
-import yagmail
 from esp32_handler import CameraCollection
 from time import sleep
 from datetime import timedelta
-import PIL
-from time_handler import get_formatted_time
-from decouple import config, Csv
 import schedule
-from os import remove
 import logging
+import multiprocessing
 
 
 # TODO - Structure the code to make it efficient and readable
@@ -25,7 +19,29 @@ import logging
 # TODO - Get motion sensors and get it interacting with the ESPs, and sending data via socket
 
 
-def main():
+def loop(timer, network_checker, cams):
+    while True:
+        schedule.run_pending()
+        logging.info("Checking the timer...")
+        timer_check = timer.check_time()
+        logging.debug("timer_check = %s" % timer_check)
+        if timer_check and not cams.is_active:
+            logging.info("check_time returned True, system will activate.")
+            cams.activate_system()
+        if not timer_check:
+            logging.info("Checking network connections...")
+            network_check = network_checker.check_network()
+            logging.info("network_check = %s" % network_check)
+            if network_check:
+                logging.info("check_network returned True, system will activate")
+                cams.activate_system()
+            else:
+                if cams.is_active:
+                    cams.deactivate()
+        sleep(1)
+
+
+def setup():
     logging.basicConfig(
         level=logging.DEBUG,
         filename="app.log",
@@ -44,22 +60,12 @@ def main():
     schedule.every().monday.do(drive.refresh_logs, get_current_date())
     schedule.every().day.do(drive.upload_log)
     schedule.every().day.at("23:59").do(emailer)
-    while True:
-        schedule.run_pending()
-        logging.info("Checking the timer...")
-        timer_check = timer.check_time()
-        logging.debug("timer_check = %s" % timer_check)
-        if timer_check:
-            logging.info("check_time returned True, system will activate.")
-        if not timer_check:
-            logging.info("Checking network connections...")
-            network_check = network_checker.check_network()
-            logging.info("network_check = %s" % network_check)
-            if network_check:
-                logging.info("check_network returned True, system will activate")
-        sleep(1)
+    logging.debug("Creating camera checking process...")
+    camera_collection_process = multiprocessing.Process(target=CameraCollection.check_cams)
+    logging.debug("Starting camera checking process...")
+    camera_collection_process.start()
+    loop(timer, network_checker, cameras)
 
 
 if __name__ == "__main__":
-    emailer = EmailHandler()
-    emailer.email_logs()
+    setup()
