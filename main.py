@@ -17,6 +17,7 @@ import multiprocessing
 # TODO - Get interactions between ESPs and program working via sockets
 # TODO - Create a socket fail safe, if the internet goes down they need to be able to reconnect without rebooting the entire system
 # TODO - Get motion sensors and get it interacting with the ESPs, and sending data via socket
+# TODO - Get data passed between processes
 
 
 def loop(timer, network_checker, cams):
@@ -27,29 +28,28 @@ def loop(timer, network_checker, cams):
         logging.debug("timer_check = %s" % timer_check)
         if timer_check and not cams.is_active:
             logging.info("check_time returned True, system will activate.")
-            cams.activate_system()
+            cams.set_system_state(True)
         if not timer_check:
             logging.info("Checking network connections...")
             network_check = network_checker.check_network()
             logging.info("network_check = %s" % network_check)
             if network_check:
                 logging.info("check_network returned True, system will activate")
-                cams.activate_system()
+                cams.set_system_state(True)
             else:
                 if cams.is_active:
-                    cams.deactivate()
+                    cams.set_system_state(False)
         sleep(1)
 
 
 def setup():
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         filename="app.log",
         filemode="w",
         format="%(asctime)s - %(levelname)s: %(message)s",
         datefmt="%H:%M:%S"
     )
-    # Initialse the main system objects
     drive = DriveHandler()
     timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
     emailer = EmailHandler()
@@ -59,9 +59,12 @@ def setup():
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     schedule.every().monday.do(drive.refresh_logs, get_current_date())
     schedule.every().day.do(drive.upload_log)
-    schedule.every().day.at("23:59").do(emailer)
+    schedule.every().day.at("23:59").do(emailer.email_logs)
     logging.debug("Creating camera checking process...")
-    camera_collection_process = multiprocessing.Process(target=CameraCollection.check_cams)
+    camera_collection_process = multiprocessing.Process(
+        target=cameras.check_cams,
+        kwargs={"drive": drive}
+    )
     logging.debug("Starting camera checking process...")
     camera_collection_process.start()
     loop(timer, network_checker, cameras)

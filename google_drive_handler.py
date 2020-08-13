@@ -61,6 +61,7 @@ class DriveHandler:
         new_file = self.drive.CreateFile({"title": filename, "parents": [{"id": folder_id}]})
         new_file.SetContentFile(filename)
         new_file.Upload()
+        remove(filename)
         return
 
     def upload_log(self):
