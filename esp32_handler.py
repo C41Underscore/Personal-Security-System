@@ -37,22 +37,30 @@ class ESP32CamInterface:
             logging.debug("Image quality: %s" % ("High" if high_quality else "Low"))
         except IncompleteRead as e:
             logging.debug("Error whilst taking image: %s" % e)
-            image = "None"
+            image = ""
         return image, current_time
 
     def check_camera(self):
         data = self.cam_socket.recv(1024)
         if data.__len__() == 0:
+            # logging.info("Attempting to reconnect to camera...")
+            # reconnection_socket = socket.socket()
+            # reconnection_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            # host, port = ("0.0.0.0", 8080)
+            # logging.debug("Binding socket to address %s, on socket %d." % (host, port))
+            # reconnection_socket.bind((host, port))
+            # logging.debug("Listening for incoming requests.")
+            # reconnection_socket.listen()
+            # cam_sock, cam_addr = reconnection_socket.accept()
+            # if cam_addr[0] == self.ip_address:
+            #     self.cam_socket = cam_sock
             return "", "Big Chungus"
         else:
             data = data.decode("utf-8")
-            # print(data)
+            print(data)
             if "BITCH SPOTTED :0" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
-
-    def change_camera_state(self, new_state):
-        self.cam_socket.send(b"Time to get snappy:triumph:" if new_state else b"Behave!")
 
 
 class CameraCollection:
@@ -72,7 +80,6 @@ class CameraCollection:
         while True:
             cam_sock, cam_addr = connection_socket.accept()
             cur_no_cams += 1
-            # cam_sock.setblocking(False)
             self.camera_interfaces.append(ESP32CamInterface(cur_no_cams, cam_addr[0], cam_sock))
             logging.info("Camera connected to with IP address %s" % cam_addr[0])
             if cur_no_cams == number_of_cams:
@@ -82,23 +89,20 @@ class CameraCollection:
 
     def set_system_state(self, new_state):
         self.is_active = new_state
-        for camera in self.camera_interfaces:
-            camera.change_camera_state(new_state)
         logging.debug("CameraCollection.is_active=%s." % self.is_active)
-        logging.info("System activated." if self.is_active else "System deactivated.")
+        logging.info("System is on." if self.is_active else "System is off.")
 
-    def check_cams(self, drive):
-        # self.is_active = True
+    def camera_loop(self, drive, activation_q):
         while True:
-            print(self.is_active)
+            self.set_system_state(activation_q.get())
             if self.is_active:
                 logging.info("Checking cameras for detected movement...")
                 for camera in self.camera_interfaces:
                     try:
                         check_image, check_time = camera.check_camera()
                     except TypeError:
+                        logging.error("Could get image off camera!")
                         continue
-                    print(check_image)
                     if check_image != "":
                         logging.debug("Saving image to the drive...")
                         check_time += ".jpg"
@@ -118,4 +122,4 @@ if __name__ == "__main__":
     cam_coll.is_active = True
     drive = DriveHandler()
     for _ in range(100):
-        cam_coll.check_cams(drive)
+        cam_coll.camera_loop(drive)

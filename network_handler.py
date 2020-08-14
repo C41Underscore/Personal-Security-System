@@ -20,18 +20,16 @@ class MACHandler:
                     try:
                         discovered_devices.append(line.decode("utf-8").strip("\n").split()[5])
                     except IndexError:
-                        logging.error(
-                            "Couldn't get details of device, line returned was %s" % line.decode("utf-8").strip("\n")
-                        )
+                        discovered_devices.append(line.decode("utf-8").strip("\n").split()[4])
                 count += 1
         discovered_devices.pop()
         logging.debug("Converting IP addresses to MAC addresses...")
-        discovered_devices = set([get_mac_address(ip=i[1:len(i)-1]) for i in discovered_devices])
+        discovered_devices = set([get_mac_address(ip=i.strip(")").strip("(")) for i in discovered_devices])
         if None in discovered_devices:
             discovered_devices.remove(None)
         device_intersection_cardinality = self.mac_list.intersection(discovered_devices).__len__()
         if device_intersection_cardinality == 0:
-            logging.info("All necessary devices are not connected to the network.")
+            logging.info("No necessary devices connected to network.")
             return True
         else:
             logging.info("%d devices connected to the network." % device_intersection_cardinality)
