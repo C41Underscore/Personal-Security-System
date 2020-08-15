@@ -14,10 +14,6 @@ import multiprocessing
 # TODO - Structure the code to make it efficient and readable
 # TODO - Plan how the system will be managed.  What will trigger cameras, what extra physical components will be needed, and how will the camera be maintained
 # TODO - Get email notifications working for specific triggers (TBD)
-# TODO - Get interactions between ESPs and program working via sockets
-# TODO - Create a socket fail safe, if the internet goes down they need to be able to reconnect without rebooting the entire system
-# TODO - Get motion sensors and get it interacting with the ESPs, and sending data via socket
-# TODO - Get data passed between processes
 
 
 def loop(timer, network_checker, q):
