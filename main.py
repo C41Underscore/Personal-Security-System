@@ -9,6 +9,7 @@ from datetime import timedelta
 import schedule
 import logging
 import multiprocessing
+from sys import stdout
 
 
 # TODO - Structure the code to make it efficient and readable
@@ -37,19 +38,20 @@ def loop(timer, network_checker, q):
 def setup():
     logging.basicConfig(
         level=logging.DEBUG,
-        #filename="app.log",
-        #filemode="w",
+        filename="app.log",
+        filemode="w",
         format="%(asctime)s - %(levelname)s: %(message)s",
         datefmt="%H:%M:%S"
     )
+    logging.getLogger().addHandler(logging.StreamHandler(stdout))
     drive = DriveHandler()
     timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
     emailer = EmailHandler()
     network_checker = MACHandler()
-    logging.info("Creating the CameraCollection.")
+    logging.info("Creating the CameraCollection...")
     cameras = CameraCollection(1)
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
-    schedule.every().monday.do(drive.refresh_logs, get_current_date())
+    # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))
     schedule.every().day.do(drive.upload_log)
     schedule.every().day.at("23:59").do(emailer.email_logs)
     logging.debug("Creating camera checking process...")

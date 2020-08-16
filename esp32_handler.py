@@ -43,21 +43,9 @@ class ESP32CamInterface:
     def check_camera(self):
         data = self.cam_socket.recv(1024)
         if data.__len__() == 0:
-            # logging.info("Attempting to reconnect to camera...")
-            # reconnection_socket = socket.socket()
-            # reconnection_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            # host, port = ("0.0.0.0", 8080)
-            # logging.debug("Binding socket to address %s, on socket %d." % (host, port))
-            # reconnection_socket.bind((host, port))
-            # logging.debug("Listening for incoming requests.")
-            # reconnection_socket.listen()
-            # cam_sock, cam_addr = reconnection_socket.accept()
-            # if cam_addr[0] == self.ip_address:
-            #     self.cam_socket = cam_sock
             return "", "Big Chungus"
         else:
             data = data.decode("utf-8")
-            print(data)
             if "BITCH SPOTTED :0" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
@@ -75,7 +63,7 @@ class CameraCollection:
         host, port = ("0.0.0.0", 8080)
         logging.debug("Binding socket to address %s, on socket %d." % (host, port))
         connection_socket.bind((host, port))
-        logging.debug("Listening for incoming requests.")
+        logging.debug("Listening for incoming requests...")
         connection_socket.listen()
         while True:
             cam_sock, cam_addr = connection_socket.accept()

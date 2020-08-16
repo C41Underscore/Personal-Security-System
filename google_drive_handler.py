@@ -27,6 +27,7 @@ class DriveHandler:
         ).GetList()
         for folder in folder_list:
             folder_to_delete = self.drive.CreateFile({"id": folder["id"]})
+            print(folder_to_delete)
             folder_to_delete.Delete()
         folders_to_trash = []
         date_modifier = timedelta(days=1)
@@ -80,7 +81,8 @@ class DriveHandler:
         )
         new_log.SetContentFile("app.log")
         new_log.Upload()
-        remove("app.log")
+        with open("app.log", "w") as log:
+            pass
         return
 
     def refresh_logs(self, current_date):
