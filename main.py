@@ -36,9 +36,9 @@ def loop(timer, network_checker, q):
 
 def setup():
     logging.basicConfig(
-        level=logging.INFO,
-        filename="app.log",
-        filemode="w",
+        level=logging.DEBUG,
+        #filename="app.log",
+        #filemode="w",
         format="%(asctime)s - %(levelname)s: %(message)s",
         datefmt="%H:%M:%S"
     )
