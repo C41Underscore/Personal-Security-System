@@ -25,7 +25,6 @@ def loop(timer, network_checker, q):
         timer_check = timer.check_time()
         logging.debug("timer_check = %s" % timer_check)
         if timer_check:
-            logging.info("check_time returned True, system will activate.")
             q.put(True)
         else:
             logging.info("Checking network connections...")
@@ -48,7 +47,7 @@ def setup():
     timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
     emailer = EmailHandler()
     network_checker = MACHandler()
-    logging.info("Creating the CameraCollection...")
+    logging.debug("Creating the CameraCollection...")
     cameras = CameraCollection(1)
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))

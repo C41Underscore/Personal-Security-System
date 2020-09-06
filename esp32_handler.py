@@ -35,7 +35,7 @@ class ESP32CamInterface:
                     image_type="cam-lo.jpg"
                 )))
             logging.debug("Image quality: %s" % ("High" if high_quality else "Low"))
-        except IncompleteRead as e:
+        except (IncompleteRead, ) as e:
             logging.debug("Error whilst taking image: %s" % e)
             image = ""
         return image, current_time
