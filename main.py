@@ -48,7 +48,7 @@ def setup():
     emailer = EmailHandler()
     network_checker = MACHandler()
     logging.debug("Creating the CameraCollection...")
-    cameras = CameraCollection(1)
+    cameras = CameraCollection(6)
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))
     schedule.every().day.do(drive.upload_log)

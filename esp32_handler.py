@@ -49,6 +49,8 @@ class ESP32CamInterface:
             if "BITCH SPOTTED :0" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
+            else:
+                return "", "Big Chungus"
 
 
 class CameraCollection:
@@ -88,8 +90,9 @@ class CameraCollection:
                 for camera in self.camera_interfaces:
                     try:
                         check_image, check_time = camera.check_camera()
-                    except TypeError:
-                        logging.error("Could get image off camera!")
+                    except TypeError as e:
+                        logging.error("Couldn't get image off camera!")
+                        logging.error(e.message)
                         continue
                     if check_image != "":
                         logging.debug("Saving image to the drive...")
