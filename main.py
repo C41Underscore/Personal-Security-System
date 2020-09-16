@@ -10,10 +10,12 @@ import schedule
 import logging
 import multiprocessing
 from sys import stdout
+from math import ceil, floor
 
 
-NUMBER_OF_CAMS = 5
-NUMBER_OF_CORES = NUMBER_OF_CAMS / 2
+NUMBER_OF_CAMS = 6
+NUMBER_OF_PROCESSES = ceil(NUMBER_OF_CAMS / 2)
+NUMBER_OF_CAMS_PER_CORE = ceil(NUMBER_OF_CAMS / NUMBER_OF_PROCESSES)
 
 
 # TODO - Structure the code to make it efficient and readable
@@ -25,13 +27,13 @@ def loop(timer, network_checker, q):
     is_active = False
     while True:
         schedule.run_pending()
-        logging.info("Checking the timer...")
+        logging.debug("Checking the timer...")
         timer_check = timer.check_time()
         logging.debug("timer_check = %s" % timer_check)
         if timer_check:
             q.put(True)
         else:
-            logging.info("Checking network connections...")
+            logging.debug("Checking network connections...")
             network_check = network_checker.check_network()
             logging.debug("network_check = %s" % network_check)
             q.put(network_check)
@@ -40,7 +42,7 @@ def loop(timer, network_checker, q):
 
 def setup():
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.DEBUG,
         filename="app.log",
         filemode="w",
         format="%(asctime)s - %(levelname)s: %(message)s",
@@ -51,23 +53,26 @@ def setup():
     timer = TimeHandler(timedelta(hours=0, minutes=0, seconds=0), timedelta(hours=7, minutes=30, seconds=0))
     emailer = EmailHandler()
     network_checker = MACHandler()
-    logging.debug("Creating the CameraCollection...")
-    cameras = CameraCollection(NUMBER_OF_CAMS)
+    logging.debug("Creating the CameraCollection(s)...")
+    camera_collections = []
+    for _ in range(NUMBER_OF_PROCESSES):
+        camera_collections.append(CameraCollection(NUMBER_OF_CAMS))
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))
     schedule.every().day.do(drive.upload_log)
     schedule.every().day.at("23:59").do(emailer.email_logs)
     logging.debug("Creating camera checking process...")
     camera_queue = multiprocessing.Queue()
-    camera_collection_process = multiprocessing.Process(
-        target=cameras.camera_loop,
+    camera_collection_processes = [multiprocessing.Process(
+        target=camera_collections[i].camera_loop,
         kwargs={
             "drive": drive,
             "activation_q": camera_queue
         }
-    )
+    ) for i in range(NUMBER_OF_PROCESSES)]
     logging.debug("Starting camera checking process...")
-    camera_collection_process.start()
+    for process in camera_collection_processes:
+        process.start()
     loop(timer, network_checker, camera_queue)
 
 
