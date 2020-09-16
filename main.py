@@ -12,6 +12,10 @@ import multiprocessing
 from sys import stdout
 
 
+NUMBER_OF_CAMS = 4
+NUMBER_OF_CORES = NUMBER_OF_CAMS / 2
+
+
 # TODO - Structure the code to make it efficient and readable
 # TODO - Plan how the system will be managed.  What will trigger cameras, what extra physical components will be needed, and how will the camera be maintained
 # TODO - Get email notifications working for specific triggers (TBD)
@@ -48,7 +52,7 @@ def setup():
     emailer = EmailHandler()
     network_checker = MACHandler()
     logging.debug("Creating the CameraCollection...")
-    cameras = CameraCollection(6)
+    cameras = CameraCollection(NUMBER_OF_CAMS)
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))
     schedule.every().day.do(drive.upload_log)
