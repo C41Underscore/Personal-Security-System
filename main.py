@@ -12,7 +12,7 @@ import multiprocessing
 from sys import stdout
 
 
-NUMBER_OF_CAMS = 4
+NUMBER_OF_CAMS = 5
 NUMBER_OF_CORES = NUMBER_OF_CAMS / 2
 
 
@@ -40,7 +40,7 @@ def loop(timer, network_checker, q):
 
 def setup():
     logging.basicConfig(
-        level=logging.DEBUG,
+        level=logging.INFO,
         filename="app.log",
         filemode="w",
         format="%(asctime)s - %(levelname)s: %(message)s",
