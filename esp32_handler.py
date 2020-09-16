@@ -58,6 +58,7 @@ class CameraCollection:
     def __init__(self, number_of_cams):
         self.is_active = False
         self.camera_interfaces = []
+        connected_ip_addresses = set()
         cur_no_cams = 0
         logging.debug("Creating listening socket.")
         connection_socket = socket.socket()
@@ -69,11 +70,12 @@ class CameraCollection:
         connection_socket.listen()
         while True:
             cam_sock, cam_addr = connection_socket.accept()
-            cur_no_cams += 1
-            self.camera_interfaces.append(ESP32CamInterface(cur_no_cams, cam_addr[0], cam_sock))
-            logging.info("Camera connected to with IP address %s" % cam_addr[0])
-            if cur_no_cams == number_of_cams:
-                break
+            if cam_addr not in connected_ip_addresses:
+                cur_no_cams += 1
+                self.camera_interfaces.append(ESP32CamInterface(cur_no_cams, cam_addr[0], cam_sock))
+                logging.info("Camera connected to with IP address %s" % cam_addr[0])
+                if cur_no_cams == number_of_cams:
+                    break
         logging.debug("Closing listening socket.")
         connection_socket.close()
 
