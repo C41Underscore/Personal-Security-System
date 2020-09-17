@@ -16,6 +16,7 @@ from math import ceil, floor
 NUMBER_OF_CAMS = 6
 NUMBER_OF_PROCESSES = ceil(NUMBER_OF_CAMS / 2)
 NUMBER_OF_CAMS_PER_CORE = ceil(NUMBER_OF_CAMS / NUMBER_OF_PROCESSES)
+print(NUMBER_OF_CAMS, NUMBER_OF_PROCESSES, NUMBER_OF_CAMS_PER_CORE)
 
 
 # TODO - Structure the code to make it efficient and readable
@@ -55,8 +56,11 @@ def setup():
     network_checker = MACHandler()
     logging.debug("Creating the CameraCollection(s)...")
     camera_collections = []
-    for _ in range(NUMBER_OF_PROCESSES):
-        camera_collections.append(CameraCollection(NUMBER_OF_CAMS))
+    for i in range(NUMBER_OF_PROCESSES):
+        if i + 1 == NUMBER_OF_PROCESSES and NUMBER_OF_CAMS % 2 == 1:
+            camera_collections.append(CameraCollection(NUMBER_OF_CAMS - 1))
+        else:
+            camera_collections.append(CameraCollection(NUMBER_OF_CAMS))
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))
     schedule.every().day.do(drive.upload_log)
