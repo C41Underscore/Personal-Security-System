@@ -13,7 +13,7 @@ from sys import stdout
 from math import ceil, floor
 
 
-NUMBER_OF_CAMS = 6
+NUMBER_OF_CAMS = 5
 NUMBER_OF_PROCESSES = ceil(NUMBER_OF_CAMS / 2)
 NUMBER_OF_CAMS_PER_CORE = ceil(NUMBER_OF_CAMS / NUMBER_OF_PROCESSES)
 
@@ -56,7 +56,7 @@ def setup():
     logging.debug("Creating the CameraCollection(s)...")
     camera_collections = []
     for _ in range(NUMBER_OF_PROCESSES):
-        camera_collections.append(CameraCollection(NUMBER_OF_CAMS))
+        camera_collections.append(CameraCollection(NUMBER_OF_CAMS_PER_CORE))
     schedule.every().monday.do(drive.refresh_drive, get_current_date())
     # schedule.every().monday.do(drive.refresh_logs, get_current_date(s))
     schedule.every().day.do(drive.upload_log)
