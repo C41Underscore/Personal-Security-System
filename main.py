@@ -10,10 +10,10 @@ import schedule
 import logging
 import multiprocessing
 from sys import stdout
-from math import ceil, floor
+from math import ceil
 
 
-NUMBER_OF_CAMS = 5
+NUMBER_OF_CAMS = 2
 NUMBER_OF_PROCESSES = ceil(NUMBER_OF_CAMS / 2)
 NUMBER_OF_CAMS_PER_CORE = ceil(NUMBER_OF_CAMS / NUMBER_OF_PROCESSES)
 print(NUMBER_OF_CAMS, NUMBER_OF_PROCESSES, NUMBER_OF_CAMS_PER_CORE)

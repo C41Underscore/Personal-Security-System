@@ -6,6 +6,8 @@ import socket
 import logging
 from google_drive_handler import DriveHandler
 from http.client import IncompleteRead
+from urllib.error import URLError
+from multiprocessing import current_process
 
 
 class ESP32CamInterface:
@@ -35,17 +37,20 @@ class ESP32CamInterface:
                     image_type="cam-lo.jpg"
                 )))
             logging.debug("Image quality: %s" % ("High" if high_quality else "Low"))
-        except (IncompleteRead, ) as e:
+        except (IncompleteRead, URLError) as e:
             logging.debug("Error whilst taking image: %s" % e)
             image = ""
         return image, current_time
 
     def check_camera(self):
+        logging.debug("Checking camera %d on process %s" % (self.id, current_process().name))
         data = self.cam_socket.recv(1024)
         if data.__len__() == 0:
+            logging.debug("No data obtained on camera %d" % self.id)
             return "", "Big Chungus"
         else:
             data = data.decode("utf-8")
+            logging.debug("Camera data obtained: %s" % data)
             if "BITCH SPOTTED :0" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
@@ -94,7 +99,7 @@ class CameraCollection:
                         check_image, check_time = camera.check_camera()
                     except TypeError as e:
                         logging.error("Couldn't get image off camera!")
-                        logging.error(e.message)
+                        logging.error(e)
                         continue
                     if check_image != "":
                         logging.debug("Saving image to the drive...")
