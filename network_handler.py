@@ -28,6 +28,7 @@ class MACHandler:
         if None in discovered_devices:
             discovered_devices.remove(None)
         device_intersection_cardinality = self.mac_list.intersection(discovered_devices).__len__()
+        print(device_intersection_cardinality)
         if device_intersection_cardinality == 0:
             logging.info("No necessary devices connected to network.")
             return True

@@ -1,969 +1,155 @@
-17:41:15 - DEBUG: URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v2/rest
-17:41:15 - DEBUG: Creating the CameraCollection(s)...
-17:41:15 - DEBUG: Creating listening socket.
-17:41:15 - DEBUG: Binding socket to address 0.0.0.0, on socket 8080.
-17:41:15 - DEBUG: Listening for incoming requests...
-17:41:43 - INFO: Camera connected to with IP address 192.168.0.38
-17:41:45 - INFO: Camera connected to with IP address 192.168.0.37
-17:41:45 - DEBUG: Closing listening socket.
-17:41:45 - DEBUG: Creating camera checking process...
-17:41:45 - DEBUG: Starting camera checking process...
-17:41:45 - DEBUG: Checking the timer...
-17:41:45 - INFO: Checking current time...
-17:41:45 - DEBUG: timer_check = False
-17:41:45 - DEBUG: Checking network connections...
-17:41:45 - DEBUG: Scanning network for connected devices...
-17:41:55 - DEBUG: Converting IP addresses to MAC addresses...
-17:41:55 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:41:57 - DEBUG: Raw MAC found: None
-17:41:57 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:41:57 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:41:57 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:41:57 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:41:57 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:41:57 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:41:57 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:41:57 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:41:57 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:41:57 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:41:57 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:41:57 - INFO: No necessary devices connected to network.
-17:41:57 - DEBUG: network_check = True
-17:41:57 - DEBUG: CameraCollection.is_active=True.
-17:41:57 - INFO: System is on.
-17:41:57 - INFO: Checking cameras for detected movement...
-17:41:57 - DEBUG: Checking camera 1 on process Process-1
-17:41:57 - DEBUG: Camera data obtained: No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-
-17:41:57 - INFO: Camera 1 detected movement, taking image...
-17:41:57 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:41:58 - DEBUG: Checking the timer...
-17:41:58 - INFO: Checking current time...
-17:41:58 - DEBUG: timer_check = False
-17:41:58 - DEBUG: Checking network connections...
-17:41:58 - DEBUG: Scanning network for connected devices...
-17:42:00 - DEBUG: Image quality: Low
-17:42:00 - DEBUG: Saving image to the drive...
-17:42:00 - INFO: 174157.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:00 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:00 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:02 - DEBUG: Checking camera 2 on process Process-1
-17:42:02 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:02 - INFO: Camera 2 detected movement, taking image...
-17:42:02 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:42:03 - DEBUG: Image quality: Low
-17:42:03 - DEBUG: Saving image to the drive...
-17:42:03 - INFO: 174202.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:03 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:04 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:13 - DEBUG: Converting IP addresses to MAC addresses...
-17:42:13 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:42:18 - DEBUG: Raw MAC found: None
-17:42:18 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:42:18 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:42:18 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:42:18 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:42:18 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:42:18 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:42:18 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:42:18 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:42:18 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:42:18 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:42:18 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:42:18 - INFO: No necessary devices connected to network.
-17:42:18 - DEBUG: network_check = True
-17:42:18 - DEBUG: CameraCollection.is_active=True.
-17:42:18 - INFO: System is on.
-17:42:18 - INFO: Checking cameras for detected movement...
-17:42:18 - DEBUG: Checking camera 1 on process Process-1
-17:42:18 - DEBUG: Camera data obtained: No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:18 - INFO: Camera 1 detected movement, taking image...
-17:42:18 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:42:19 - DEBUG: Image quality: Low
-17:42:19 - DEBUG: Saving image to the drive...
-17:42:19 - INFO: 174218.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:19 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:19 - DEBUG: Checking the timer...
-17:42:19 - INFO: Checking current time...
-17:42:19 - DEBUG: timer_check = False
-17:42:19 - DEBUG: Checking network connections...
-17:42:19 - DEBUG: Scanning network for connected devices...
-17:42:19 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:21 - DEBUG: Checking camera 2 on process Process-1
-17:42:21 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:21 - INFO: Camera 2 detected movement, taking image...
-17:42:21 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:42:22 - DEBUG: Image quality: Low
-17:42:22 - DEBUG: Saving image to the drive...
-17:42:22 - INFO: 174221.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:22 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:22 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:27 - DEBUG: Converting IP addresses to MAC addresses...
-17:42:27 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:42:32 - DEBUG: Raw MAC found: None
-17:42:32 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:42:32 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:42:32 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:42:32 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:42:32 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:42:32 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:42:32 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:42:32 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:42:32 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:42:32 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:42:32 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:42:32 - INFO: No necessary devices connected to network.
-17:42:32 - DEBUG: network_check = True
-17:42:32 - DEBUG: CameraCollection.is_active=True.
-17:42:32 - INFO: System is on.
-17:42:32 - INFO: Checking cameras for detected movement...
-17:42:32 - DEBUG: Checking camera 1 on process Process-1
-17:42:32 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:32 - INFO: Camera 1 detected movement, taking image...
-17:42:32 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:42:33 - DEBUG: Image quality: Low
-17:42:33 - DEBUG: Saving image to the drive...
-17:42:33 - INFO: 174232.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:33 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:33 - DEBUG: Checking the timer...
-17:42:33 - INFO: Checking current time...
-17:42:33 - DEBUG: timer_check = False
-17:42:33 - DEBUG: Checking network connections...
-17:42:33 - DEBUG: Scanning network for connected devices...
-17:42:33 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:35 - DEBUG: Checking camera 2 on process Process-1
-17:42:35 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:35 - INFO: Camera 2 detected movement, taking image...
-17:42:35 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:42:37 - DEBUG: Image quality: Low
-17:42:37 - DEBUG: Saving image to the drive...
-17:42:37 - INFO: 174235.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:37 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:37 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:39 - DEBUG: Converting IP addresses to MAC addresses...
-17:42:39 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:42:43 - DEBUG: Raw MAC found: None
-17:42:43 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:42:43 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:42:43 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:42:43 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:42:43 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:42:43 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:42:43 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:42:43 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:42:43 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:42:43 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:42:43 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:42:43 - INFO: No necessary devices connected to network.
-17:42:43 - DEBUG: network_check = True
-17:42:43 - DEBUG: CameraCollection.is_active=True.
-17:42:43 - INFO: System is on.
-17:42:43 - INFO: Checking cameras for detected movement...
-17:42:43 - DEBUG: Checking camera 1 on process Process-1
-17:42:43 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:43 - INFO: Camera 1 detected movement, taking image...
-17:42:43 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:42:44 - DEBUG: Checking the timer...
-17:42:44 - INFO: Checking current time...
-17:42:44 - DEBUG: timer_check = False
-17:42:44 - DEBUG: Checking network connections...
-17:42:44 - DEBUG: Scanning network for connected devices...
-17:42:44 - DEBUG: Image quality: Low
-17:42:44 - DEBUG: Saving image to the drive...
-17:42:44 - INFO: 174243.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:44 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:44 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:42:45 - DEBUG: Checking camera 2 on process Process-1
-17:42:45 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:42:45 - INFO: Camera 2 detected movement, taking image...
-17:42:45 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:42:47 - DEBUG: Image quality: Low
-17:42:47 - DEBUG: Saving image to the drive...
-17:42:47 - INFO: 174245.jpg is being uploaded to the drive in folder 2020-09-23.
-17:42:47 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:42:47 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:43:02 - DEBUG: Converting IP addresses to MAC addresses...
-17:43:02 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:43:09 - DEBUG: Raw MAC found: None
-17:43:09 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:43:09 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:43:09 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:43:09 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:43:09 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:43:09 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:43:09 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:43:09 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:43:09 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:43:09 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:43:09 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:43:09 - INFO: No necessary devices connected to network.
-17:43:09 - DEBUG: network_check = True
-17:43:09 - DEBUG: CameraCollection.is_active=True.
-17:43:09 - INFO: System is on.
-17:43:09 - INFO: Checking cameras for detected movement...
-17:43:09 - DEBUG: Checking camera 1 on process Process-1
-17:43:09 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:43:09 - INFO: Camera 1 detected movement, taking image...
-17:43:09 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:43:10 - DEBUG: Checking the timer...
-17:43:10 - INFO: Checking current time...
-17:43:10 - DEBUG: timer_check = False
-17:43:10 - DEBUG: Checking network connections...
-17:43:10 - DEBUG: Scanning network for connected devices...
-17:43:11 - DEBUG: Image quality: Low
-17:43:11 - DEBUG: Saving image to the drive...
-17:43:11 - INFO: 174309.jpg is being uploaded to the drive in folder 2020-09-23.
-17:43:11 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:43:11 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:43:12 - DEBUG: Checking camera 2 on process Process-1
-17:43:12 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:43:12 - INFO: Camera 2 detected movement, taking image...
-17:43:12 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:43:13 - DEBUG: Image quality: Low
-17:43:13 - DEBUG: Saving image to the drive...
-17:43:13 - INFO: 174312.jpg is being uploaded to the drive in folder 2020-09-23.
-17:43:13 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:43:13 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:43:20 - DEBUG: Converting IP addresses to MAC addresses...
-17:43:20 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:43:27 - DEBUG: Raw MAC found: None
-17:43:27 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:43:27 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:43:27 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:43:27 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:43:27 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:43:27 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:43:27 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:43:27 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:43:27 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:43:27 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:43:27 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:43:27 - INFO: No necessary devices connected to network.
-17:43:27 - DEBUG: network_check = True
-17:43:27 - DEBUG: CameraCollection.is_active=True.
-17:43:27 - INFO: System is on.
-17:43:27 - INFO: Checking cameras for detected movement...
-17:43:27 - DEBUG: Checking camera 1 on process Process-1
-17:43:27 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-17:43:27 - INFO: Camera 1 detected movement, taking image...
-17:43:27 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:43:28 - DEBUG: Checking the timer...
-17:43:28 - INFO: Checking current time...
-17:43:28 - DEBUG: timer_check = False
-17:43:28 - DEBUG: Checking network connections...
-17:43:28 - DEBUG: Scanning network for connected devices...
-17:43:29 - DEBUG: Image quality: Low
-17:43:29 - DEBUG: Saving image to the drive...
-17:43:29 - INFO: 174327.jpg is being uploaded to the drive in folder 2020-09-23.
-17:43:29 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:43:30 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:43:31 - DEBUG: Checking camera 2 on process Process-1
-17:43:31 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-
-17:43:31 - INFO: Camera 2 detected movement, taking image...
-17:43:31 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:43:32 - DEBUG: Image quality: Low
-17:43:32 - DEBUG: Saving image to the drive...
-17:43:32 - INFO: 174331.jpg is being uploaded to the drive in folder 2020-09-23.
-17:43:32 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:43:32 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:43:45 - DEBUG: Converting IP addresses to MAC addresses...
-17:43:45 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:43:55 - DEBUG: Raw MAC found: None
-17:43:55 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:43:55 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:43:55 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:43:55 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:43:55 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:43:55 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:43:55 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:43:55 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:43:55 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:43:55 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:43:55 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:43:55 - INFO: No necessary devices connected to network.
-17:43:55 - DEBUG: network_check = True
-17:43:55 - DEBUG: CameraCollection.is_active=True.
-17:43:55 - INFO: System is on.
-17:43:55 - INFO: Checking cameras for detected movement...
-17:43:55 - DEBUG: Checking camera 1 on process Process-1
-17:43:55 - DEBUG: Camera data obtained: 
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-
-17:43:55 - INFO: Camera 1 detected movement, taking image...
-17:43:55 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:43:55 - DEBUG: Image quality: Low
-17:43:55 - DEBUG: Saving image to the drive...
-17:43:55 - INFO: 174355.jpg is being uploaded to the drive in folder 2020-09-23.
-17:43:55 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:43:56 - DEBUG: Checking the timer...
-17:43:56 - INFO: Checking current time...
-17:43:56 - DEBUG: timer_check = False
-17:43:56 - DEBUG: Checking network connections...
-17:43:56 - DEBUG: Scanning network for connected devices...
-17:43:56 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:43:57 - DEBUG: Checking camera 2 on process Process-1
-17:43:57 - DEBUG: Camera data obtained: No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0
-17:43:57 - INFO: Camera 2 detected movement, taking image...
-17:43:57 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:43:58 - DEBUG: Converting IP addresses to MAC addresses...
-17:43:58 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:44:01 - DEBUG: Image quality: Low
-17:44:01 - DEBUG: Saving image to the drive...
-17:44:01 - INFO: 174357.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:01 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:01 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:13 - DEBUG: Raw MAC found: None
-17:44:13 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:44:13 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:44:13 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:44:13 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:44:13 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:44:13 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:44:13 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:44:13 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:44:13 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:44:13 - INFO: No necessary devices connected to network.
-17:44:13 - DEBUG: network_check = True
-17:44:13 - DEBUG: CameraCollection.is_active=True.
-17:44:13 - INFO: System is on.
-17:44:13 - INFO: Checking cameras for detected movement...
-17:44:13 - DEBUG: Checking camera 1 on process Process-1
-17:44:13 - DEBUG: Camera data obtained: No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-
-17:44:13 - INFO: Camera 1 detected movement, taking image...
-17:44:13 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:44:13 - DEBUG: Image quality: Low
-17:44:13 - DEBUG: Saving image to the drive...
-17:44:13 - INFO: 174413.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:13 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:14 - DEBUG: Checking the timer...
-17:44:14 - INFO: Checking current time...
-17:44:14 - DEBUG: timer_check = False
-17:44:14 - DEBUG: Checking network connections...
-17:44:14 - DEBUG: Scanning network for connected devices...
-17:44:14 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:15 - DEBUG: Checking camera 2 on process Process-1
-17:44:15 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0
-17:44:15 - INFO: Camera 2 detected movement, taking image...
-17:44:15 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:44:16 - DEBUG: Image quality: Low
-17:44:16 - DEBUG: Saving image to the drive...
-17:44:16 - INFO: 174415.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:16 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:17 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:19 - DEBUG: Converting IP addresses to MAC addresses...
-17:44:19 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:44:28 - DEBUG: Raw MAC found: None
-17:44:28 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:44:28 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:44:28 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:44:28 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:44:28 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:44:28 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:44:28 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:44:28 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:44:28 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:44:28 - INFO: No necessary devices connected to network.
-17:44:28 - DEBUG: network_check = True
-17:44:28 - DEBUG: CameraCollection.is_active=True.
-17:44:28 - INFO: System is on.
-17:44:28 - INFO: Checking cameras for detected movement...
-17:44:28 - DEBUG: Checking camera 1 on process Process-1
-17:44:28 - DEBUG: Camera data obtained: No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:44:28 - INFO: Camera 1 detected movement, taking image...
-17:44:28 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:44:29 - DEBUG: Checking the timer...
-17:44:29 - INFO: Checking current time...
-17:44:29 - DEBUG: timer_check = False
-17:44:29 - DEBUG: Checking network connections...
-17:44:29 - DEBUG: Scanning network for connected devices...
-17:44:29 - DEBUG: Image quality: Low
-17:44:29 - DEBUG: Saving image to the drive...
-17:44:29 - INFO: 174428.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:29 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:30 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:31 - DEBUG: Checking camera 2 on process Process-1
-17:44:31 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-
-17:44:31 - INFO: Camera 2 detected movement, taking image...
-17:44:31 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:44:31 - DEBUG: Image quality: Low
-17:44:31 - DEBUG: Saving image to the drive...
-17:44:31 - INFO: 174431.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:31 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:32 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:36 - DEBUG: Converting IP addresses to MAC addresses...
-17:44:36 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:44:44 - DEBUG: Raw MAC found: None
-17:44:44 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:44:44 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:44:44 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:44:44 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:44:44 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:44:44 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:44:44 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:44:44 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:44:44 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:44:44 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:44:44 - INFO: No necessary devices connected to network.
-17:44:44 - DEBUG: network_check = True
-17:44:44 - DEBUG: CameraCollection.is_active=True.
-17:44:44 - INFO: System is on.
-17:44:44 - INFO: Checking cameras for detected movement...
-17:44:44 - DEBUG: Checking camera 1 on process Process-1
-17:44:44 - DEBUG: Camera data obtained: BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-
-17:44:44 - INFO: Camera 1 detected movement, taking image...
-17:44:44 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:44:45 - DEBUG: Checking the timer...
-17:44:45 - INFO: Checking current time...
-17:44:45 - DEBUG: timer_check = False
-17:44:45 - DEBUG: Checking network connections...
-17:44:45 - DEBUG: Scanning network for connected devices...
-17:44:45 - DEBUG: Image quality: Low
-17:44:45 - DEBUG: Saving image to the drive...
-17:44:46 - INFO: 174444.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:46 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:46 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:47 - DEBUG: Checking camera 2 on process Process-1
-17:44:47 - DEBUG: Camera data obtained: No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-
-17:44:47 - INFO: Camera 2 detected movement, taking image...
-17:44:47 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:44:48 - DEBUG: Image quality: Low
-17:44:48 - DEBUG: Saving image to the drive...
-17:44:48 - DEBUG: Converting IP addresses to MAC addresses...
-17:44:48 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:44:48 - INFO: 174447.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:48 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:44:48 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:44:58 - DEBUG: Raw MAC found: None
-17:44:58 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:44:58 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:44:58 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:44:58 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:44:58 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:44:58 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:44:58 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:44:58 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:44:58 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:44:58 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:44:58 - INFO: No necessary devices connected to network.
-17:44:58 - DEBUG: network_check = True
-17:44:58 - DEBUG: CameraCollection.is_active=True.
-17:44:58 - INFO: System is on.
-17:44:58 - INFO: Checking cameras for detected movement...
-17:44:58 - DEBUG: Checking camera 1 on process Process-1
-17:44:58 - DEBUG: Camera data obtained: No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:44:58 - INFO: Camera 1 detected movement, taking image...
-17:44:58 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:44:59 - DEBUG: Image quality: Low
-17:44:59 - DEBUG: Saving image to the drive...
-17:44:59 - DEBUG: Checking the timer...
-17:44:59 - INFO: Checking current time...
-17:44:59 - DEBUG: timer_check = False
-17:44:59 - DEBUG: Checking network connections...
-17:44:59 - DEBUG: Scanning network for connected devices...
-17:44:59 - INFO: 174458.jpg is being uploaded to the drive in folder 2020-09-23.
-17:44:59 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:45:00 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:45:01 - DEBUG: Checking camera 2 on process Process-1
-17:45:01 - DEBUG: Camera data obtained: No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-
-17:45:01 - INFO: Camera 2 detected movement, taking image...
-17:45:01 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:45:02 - DEBUG: Image quality: Low
-17:45:02 - DEBUG: Saving image to the drive...
-17:45:02 - INFO: 174501.jpg is being uploaded to the drive in folder 2020-09-23.
-17:45:02 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:45:02 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:45:07 - DEBUG: Converting IP addresses to MAC addresses...
-17:45:07 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:45:13 - DEBUG: Raw MAC found: None
-17:45:13 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:45:13 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:45:13 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:45:14 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:45:14 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:45:14 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:45:14 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:45:14 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:45:14 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:45:14 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:45:14 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:45:14 - INFO: No necessary devices connected to network.
-17:45:14 - DEBUG: network_check = True
-17:45:14 - DEBUG: CameraCollection.is_active=True.
-17:45:14 - INFO: System is on.
-17:45:14 - INFO: Checking cameras for detected movement...
-17:45:14 - DEBUG: Checking camera 1 on process Process-1
-17:45:14 - DEBUG: Camera data obtained: BITCH SPOTTED :0BITCH SPOTTED :0
-17:45:14 - INFO: Camera 1 detected movement, taking image...
-17:45:14 - DEBUG: Taking image with camera 1, IP address 192.168.0.38
-17:45:15 - DEBUG: Checking the timer...
-17:45:15 - INFO: Checking current time...
-17:45:15 - DEBUG: timer_check = False
-17:45:15 - DEBUG: Checking network connections...
-17:45:15 - DEBUG: Scanning network for connected devices...
-17:45:21 - DEBUG: Converting IP addresses to MAC addresses...
-17:45:21 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:45:26 - DEBUG: Image quality: Low
-17:45:26 - DEBUG: Saving image to the drive...
-17:45:26 - INFO: 174514.jpg is being uploaded to the drive in folder 2020-09-23.
-17:45:26 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:45:26 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:45:28 - DEBUG: Checking camera 2 on process Process-1
-17:45:28 - DEBUG: Camera data obtained: No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-No bitches atm :$
-BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0BITCH SPOTTED :0
-17:45:28 - INFO: Camera 2 detected movement, taking image...
-17:45:28 - DEBUG: Taking image with camera 2, IP address 192.168.0.37
-17:45:28 - DEBUG: Image quality: Low
-17:45:28 - DEBUG: Saving image to the drive...
-17:45:28 - INFO: 174528.jpg is being uploaded to the drive in folder 2020-09-23.
-17:45:28 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-09-23%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
-17:45:28 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
-17:45:28 - DEBUG: Raw MAC found: None
-17:45:28 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:45:28 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:45:28 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:45:28 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:45:28 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:45:28 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:45:28 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:45:28 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:45:28 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:45:28 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:45:28 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:45:28 - INFO: No necessary devices connected to network.
-17:45:28 - DEBUG: network_check = True
-17:45:29 - DEBUG: Checking the timer...
-17:45:29 - INFO: Checking current time...
-17:45:29 - DEBUG: timer_check = False
-17:45:29 - DEBUG: Checking network connections...
-17:45:29 - DEBUG: Scanning network for connected devices...
-17:45:29 - DEBUG: CameraCollection.is_active=True.
-17:45:29 - INFO: System is on.
-17:45:29 - INFO: Checking cameras for detected movement...
-17:45:29 - DEBUG: Checking camera 1 on process Process-1
-17:45:34 - DEBUG: Converting IP addresses to MAC addresses...
-17:45:34 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:45:43 - DEBUG: Raw MAC found: None
-17:45:43 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:45:43 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:45:43 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:45:43 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:45:43 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:45:43 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:45:43 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:45:43 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:45:43 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:45:43 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:45:43 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:45:43 - INFO: No necessary devices connected to network.
-17:45:43 - DEBUG: network_check = True
-17:45:44 - DEBUG: Checking the timer...
-17:45:44 - INFO: Checking current time...
-17:45:44 - DEBUG: timer_check = False
-17:45:44 - DEBUG: Checking network connections...
-17:45:44 - DEBUG: Scanning network for connected devices...
-17:45:52 - DEBUG: Converting IP addresses to MAC addresses...
-17:45:52 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:46:00 - DEBUG: Raw MAC found: None
-17:46:00 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:46:00 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:46:00 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:46:00 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:46:00 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:46:00 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:46:00 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:46:00 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:46:00 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:46:00 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:46:00 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:46:00 - INFO: No necessary devices connected to network.
-17:46:00 - DEBUG: network_check = True
-17:46:01 - DEBUG: Checking the timer...
-17:46:01 - INFO: Checking current time...
-17:46:01 - DEBUG: timer_check = False
-17:46:01 - DEBUG: Checking network connections...
-17:46:01 - DEBUG: Scanning network for connected devices...
-17:46:12 - DEBUG: Converting IP addresses to MAC addresses...
-17:46:12 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:46:15 - DEBUG: Raw MAC found: None
-17:46:15 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:46:15 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:46:15 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:46:15 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:46:15 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:46:15 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:46:15 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:46:15 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:46:15 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:46:15 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:46:15 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:46:15 - INFO: No necessary devices connected to network.
-17:46:15 - DEBUG: network_check = True
-17:46:16 - DEBUG: Checking the timer...
-17:46:16 - INFO: Checking current time...
-17:46:16 - DEBUG: timer_check = False
-17:46:16 - DEBUG: Checking network connections...
-17:46:16 - DEBUG: Scanning network for connected devices...
-17:46:19 - DEBUG: Converting IP addresses to MAC addresses...
-17:46:19 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:46:29 - DEBUG: Raw MAC found: None
-17:46:29 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:46:29 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:46:29 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:46:29 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:46:29 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:46:29 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:46:29 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:46:29 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:46:29 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:46:29 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:46:29 - INFO: No necessary devices connected to network.
-17:46:29 - DEBUG: network_check = True
-17:46:30 - DEBUG: Checking the timer...
-17:46:30 - INFO: Checking current time...
-17:46:30 - DEBUG: timer_check = False
-17:46:30 - DEBUG: Checking network connections...
-17:46:30 - DEBUG: Scanning network for connected devices...
-17:46:44 - DEBUG: Converting IP addresses to MAC addresses...
-17:46:44 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:46:46 - DEBUG: Raw MAC found: None
-17:46:46 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:46:46 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:46:46 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:46:46 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:46:46 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:46:46 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:46:46 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:46:46 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:46:46 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:46:46 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:46:46 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:46:46 - INFO: No necessary devices connected to network.
-17:46:46 - DEBUG: network_check = True
-17:46:47 - DEBUG: Checking the timer...
-17:46:47 - INFO: Checking current time...
-17:46:47 - DEBUG: timer_check = False
-17:46:47 - DEBUG: Checking network connections...
-17:46:47 - DEBUG: Scanning network for connected devices...
-17:46:52 - DEBUG: Converting IP addresses to MAC addresses...
-17:46:52 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:46:59 - DEBUG: Raw MAC found: None
-17:46:59 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:46:59 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:46:59 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:46:59 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:46:59 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:46:59 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:46:59 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:46:59 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:46:59 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:46:59 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:46:59 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:46:59 - INFO: No necessary devices connected to network.
-17:46:59 - DEBUG: network_check = True
-17:47:00 - DEBUG: Checking the timer...
-17:47:00 - INFO: Checking current time...
-17:47:00 - DEBUG: timer_check = False
-17:47:00 - DEBUG: Checking network connections...
-17:47:00 - DEBUG: Scanning network for connected devices...
-17:47:13 - DEBUG: Converting IP addresses to MAC addresses...
-17:47:13 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:47:19 - DEBUG: Raw MAC found: None
-17:47:19 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:47:19 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:47:19 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:47:19 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:47:19 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:47:19 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:47:19 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:47:19 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:47:19 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:47:19 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:47:19 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:47:19 - INFO: No necessary devices connected to network.
-17:47:19 - DEBUG: network_check = True
-17:47:20 - DEBUG: Checking the timer...
-17:47:20 - INFO: Checking current time...
-17:47:20 - DEBUG: timer_check = False
-17:47:20 - DEBUG: Checking network connections...
-17:47:20 - DEBUG: Scanning network for connected devices...
-17:47:31 - DEBUG: Converting IP addresses to MAC addresses...
-17:47:31 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:47:43 - DEBUG: Raw MAC found: None
-17:47:43 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:47:43 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:47:43 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:47:43 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:47:43 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:47:43 - DEBUG: Raw MAC found: 5e:15:e6:5d:5c:ea
-17:47:43 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:47:43 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:47:43 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:47:43 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:47:43 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:47:43 - INFO: No necessary devices connected to network.
-17:47:43 - DEBUG: network_check = True
-17:47:44 - DEBUG: Checking the timer...
-17:47:44 - INFO: Checking current time...
-17:47:44 - DEBUG: timer_check = False
-17:47:44 - DEBUG: Checking network connections...
-17:47:44 - DEBUG: Scanning network for connected devices...
-17:47:47 - DEBUG: Converting IP addresses to MAC addresses...
-17:47:47 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:47:59 - DEBUG: Raw MAC found: None
-17:47:59 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:47:59 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:47:59 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:47:59 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:47:59 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:47:59 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:47:59 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:47:59 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:47:59 - INFO: No necessary devices connected to network.
-17:47:59 - DEBUG: network_check = True
-17:48:00 - DEBUG: Checking the timer...
-17:48:00 - INFO: Checking current time...
-17:48:00 - DEBUG: timer_check = False
-17:48:00 - DEBUG: Checking network connections...
-17:48:00 - DEBUG: Scanning network for connected devices...
-17:48:07 - DEBUG: Converting IP addresses to MAC addresses...
-17:48:07 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:48:14 - DEBUG: Raw MAC found: None
-17:48:14 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:48:14 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:48:14 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:48:14 - DEBUG: Raw MAC found: a8:66:7f:1d:02:b0
-17:48:14 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:48:14 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:48:14 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:48:14 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:48:14 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:48:14 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:48:14 - INFO: No necessary devices connected to network.
-17:48:14 - DEBUG: network_check = True
-17:48:15 - DEBUG: Checking the timer...
-17:48:15 - INFO: Checking current time...
-17:48:15 - DEBUG: timer_check = False
-17:48:15 - DEBUG: Checking network connections...
-17:48:15 - DEBUG: Scanning network for connected devices...
-17:48:28 - DEBUG: Converting IP addresses to MAC addresses...
-17:48:28 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:48:32 - DEBUG: Raw MAC found: None
-17:48:32 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:48:32 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:48:32 - DEBUG: Raw MAC found: 40:9c:28:66:1c:2b
-17:48:32 - DEBUG: Raw MAC found: a8:66:7f:1d:02:b0
-17:48:32 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:48:32 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:48:32 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:48:32 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:48:32 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:48:32 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:48:32 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:48:32 - INFO: No necessary devices connected to network.
-17:48:32 - DEBUG: network_check = True
-17:48:33 - DEBUG: Checking the timer...
-17:48:33 - INFO: Checking current time...
-17:48:33 - DEBUG: timer_check = False
-17:48:33 - DEBUG: Checking network connections...
-17:48:33 - DEBUG: Scanning network for connected devices...
-17:48:40 - DEBUG: Converting IP addresses to MAC addresses...
-17:48:40 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:48:44 - DEBUG: Raw MAC found: None
-17:48:44 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:48:44 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:48:44 - DEBUG: Raw MAC found: a8:66:7f:1d:02:b0
-17:48:44 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:48:44 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:48:44 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:48:44 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:48:44 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:48:44 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:48:44 - INFO: No necessary devices connected to network.
-17:48:44 - DEBUG: network_check = True
-17:48:45 - DEBUG: Checking the timer...
-17:48:45 - INFO: Checking current time...
-17:48:45 - DEBUG: timer_check = False
-17:48:45 - DEBUG: Checking network connections...
-17:48:45 - DEBUG: Scanning network for connected devices...
-17:48:50 - DEBUG: Converting IP addresses to MAC addresses...
-17:48:50 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:48:59 - DEBUG: Raw MAC found: None
-17:48:59 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:48:59 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:48:59 - DEBUG: Raw MAC found: a8:66:7f:1d:02:b0
-17:48:59 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:48:59 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:48:59 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:48:59 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:48:59 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:48:59 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:48:59 - INFO: No necessary devices connected to network.
-17:48:59 - DEBUG: network_check = True
-17:49:00 - DEBUG: Checking the timer...
-17:49:00 - INFO: Checking current time...
-17:49:00 - DEBUG: timer_check = False
-17:49:00 - DEBUG: Checking network connections...
-17:49:00 - DEBUG: Scanning network for connected devices...
-17:49:12 - DEBUG: Converting IP addresses to MAC addresses...
-17:49:12 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:49:15 - DEBUG: Raw MAC found: None
-17:49:15 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:49:15 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:49:15 - DEBUG: Raw MAC found: a8:66:7f:1d:02:b0
-17:49:15 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:49:15 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:49:15 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:49:15 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:49:15 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:49:15 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:49:15 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:49:15 - INFO: No necessary devices connected to network.
-17:49:15 - DEBUG: network_check = True
-17:49:16 - DEBUG: Checking the timer...
-17:49:16 - INFO: Checking current time...
-17:49:16 - DEBUG: timer_check = False
-17:49:16 - DEBUG: Checking network connections...
-17:49:16 - DEBUG: Scanning network for connected devices...
-17:49:32 - DEBUG: Converting IP addresses to MAC addresses...
-17:49:32 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
-17:49:39 - DEBUG: Raw MAC found: None
-17:49:39 - DEBUG: Raw MAC found: 20:df:b9:32:1f:6e
-17:49:39 - DEBUG: Raw MAC found: 00:f6:20:b7:f0:81
-17:49:39 - DEBUG: Raw MAC found: a8:66:7f:1d:02:b0
-17:49:39 - DEBUG: Raw MAC found: 3a:97:fe:5f:1a:ad
-17:49:39 - DEBUG: Raw MAC found: a6:c4:74:dd:ab:11
-17:49:39 - DEBUG: Raw MAC found: 48:d7:05:c5:be:c3
-17:49:39 - DEBUG: Raw MAC found: da:a0:73:51:34:a2
-17:49:40 - DEBUG: Raw MAC found: 8c:aa:b5:8c:71:78
-17:49:40 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
-17:49:40 - DEBUG: Raw MAC found: c8:63:f1:63:18:c5
-17:49:40 - INFO: No necessary devices connected to network.
-17:49:40 - DEBUG: network_check = True
-17:49:41 - DEBUG: Checking the timer...
-17:49:41 - INFO: Checking current time...
-17:49:41 - DEBUG: timer_check = False
-17:49:41 - DEBUG: Checking network connections...
-17:49:41 - DEBUG: Scanning network for connected devices...
-17:49:43 - DEBUG: Converting IP addresses to MAC addresses...
-17:49:43 - DEBUG: Raw MAC found: 84:0b:7c:57:c8:82
+18:23:10 - DEBUG: URL being requested: GET https://www.googleapis.com/discovery/v1/apis/drive/v2/rest
+18:23:10 - DEBUG: Creating the CameraCollection(s)...
+18:23:10 - DEBUG: Creating listening socket.
+18:23:10 - DEBUG: Binding socket to address 0.0.0.0, on socket 8080.
+18:23:10 - DEBUG: Listening for incoming requests...
+18:23:15 - INFO: Camera connected to with IP address 192.168.0.16
+18:23:15 - DEBUG: Closing listening socket.
+18:23:15 - DEBUG: Creating camera checking process...
+18:23:15 - DEBUG: Starting camera checking process...
+18:23:25 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: [never], next run: 2020-12-16 18:23:25)
+18:23:25 - DEBUG: Checking network connections...
+18:23:25 - DEBUG: Scanning network for connected devices...
+18:23:36 - DEBUG: Converting IP addresses to MAC addresses...
+18:23:36 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:23:36 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:23:36 - DEBUG: Raw MAC found: ee:b4:05:df:f7:d1
+18:23:36 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:23:36 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:23:36 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:23:38 - DEBUG: Raw MAC found: None
+18:23:38 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
+18:23:38 - INFO: No necessary devices connected to network.
+18:23:38 - DEBUG: network_check = True
+18:23:38 - DEBUG: CameraCollection.is_active=True.
+18:23:38 - INFO: System is on.
+18:23:38 - INFO: Checking cameras for detected movement...
+18:23:38 - DEBUG: Checking camera 1 on process Process-1
+18:23:38 - INFO: Camera 1 detected movement, taking image...
+18:23:38 - DEBUG: Taking image with camera 1, IP address 192.168.0.16
+18:23:48 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:23:38, next run: 2020-12-16 18:23:48)
+18:23:48 - DEBUG: Checking network connections...
+18:23:48 - DEBUG: Scanning network for connected devices...
+18:23:54 - DEBUG: Converting IP addresses to MAC addresses...
+18:23:54 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:23:54 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:23:54 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:23:54 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:23:54 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:23:55 - DEBUG: Raw MAC found: None
+18:23:55 - INFO: No necessary devices connected to network.
+18:23:55 - DEBUG: network_check = True
+18:23:56 - DEBUG: Image quality: Low
+18:23:56 - DEBUG: Saving image to the drive...
+18:23:56 - INFO: 182338.jpg is being uploaded to the drive in folder 2020-12-16.
+18:23:56 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-12-16%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
+18:23:56 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
+18:23:58 - DEBUG: CameraCollection.is_active=True.
+18:23:58 - INFO: System is on.
+18:23:58 - INFO: Checking cameras for detected movement...
+18:23:58 - DEBUG: Checking camera 1 on process Process-1
+18:23:58 - INFO: Camera 1 detected movement, taking image...
+18:23:58 - DEBUG: Taking image with camera 1, IP address 192.168.0.16
+18:24:02 - DEBUG: Image quality: Low
+18:24:02 - DEBUG: Saving image to the drive...
+18:24:02 - INFO: 182358.jpg is being uploaded to the drive in folder 2020-12-16.
+18:24:02 - DEBUG: URL being requested: GET https://www.googleapis.com/drive/v2/files?q=title%3D%272020-12-16%27+and+mimeType%3D%27application%2Fvnd.google-apps.folder%27+and+trashed%3Dfalse&maxResults=1000&supportsAllDrives=true&includeItemsFromAllDrives=true&alt=json
+18:24:02 - DEBUG: URL being requested: POST https://www.googleapis.com/upload/drive/v2/files?supportsAllDrives=true&alt=json&uploadType=resumable
+18:24:05 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:23:55, next run: 2020-12-16 18:24:05)
+18:24:05 - DEBUG: Checking network connections...
+18:24:05 - DEBUG: Scanning network for connected devices...
+18:24:20 - DEBUG: Converting IP addresses to MAC addresses...
+18:24:20 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:24:20 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:24:20 - DEBUG: Raw MAC found: ee:b4:05:df:f7:d1
+18:24:20 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:24:20 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:24:20 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:24:21 - DEBUG: Raw MAC found: None
+18:24:21 - DEBUG: Raw MAC found: 72:98:7c:a5:d9:02
+18:24:21 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
+18:24:21 - INFO: No necessary devices connected to network.
+18:24:21 - DEBUG: network_check = True
+18:24:21 - DEBUG: CameraCollection.is_active=True.
+18:24:21 - INFO: System is on.
+18:24:21 - INFO: Checking cameras for detected movement...
+18:24:21 - DEBUG: Checking camera 1 on process Process-1
+18:24:31 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:24:21, next run: 2020-12-16 18:24:31)
+18:24:31 - DEBUG: Checking network connections...
+18:24:31 - DEBUG: Scanning network for connected devices...
+18:24:50 - DEBUG: Converting IP addresses to MAC addresses...
+18:24:50 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:24:50 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:24:50 - DEBUG: Raw MAC found: ee:b4:05:df:f7:d1
+18:24:50 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:24:50 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:24:50 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:24:51 - DEBUG: Raw MAC found: None
+18:24:51 - DEBUG: Raw MAC found: 72:98:7c:a5:d9:02
+18:24:51 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
+18:24:51 - INFO: No necessary devices connected to network.
+18:24:51 - DEBUG: network_check = True
+18:24:51 - DEBUG: CameraCollection.is_active=True.
+18:24:51 - INFO: System is on.
+18:24:51 - INFO: Checking cameras for detected movement...
+18:24:51 - DEBUG: Checking camera 1 on process Process-1
+18:25:01 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:24:51, next run: 2020-12-16 18:25:01)
+18:25:01 - DEBUG: Checking network connections...
+18:25:01 - DEBUG: Scanning network for connected devices...
+18:25:05 - DEBUG: Converting IP addresses to MAC addresses...
+18:25:05 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:25:05 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:25:05 - DEBUG: Raw MAC found: ee:b4:05:df:f7:d1
+18:25:05 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:25:05 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:25:05 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:25:07 - DEBUG: Raw MAC found: None
+18:25:07 - DEBUG: Raw MAC found: 72:98:7c:a5:d9:02
+18:25:07 - INFO: No necessary devices connected to network.
+18:25:07 - DEBUG: network_check = True
+18:25:07 - DEBUG: CameraCollection.is_active=True.
+18:25:07 - INFO: System is on.
+18:25:07 - INFO: Checking cameras for detected movement...
+18:25:07 - DEBUG: Checking camera 1 on process Process-1
+18:25:17 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:25:07, next run: 2020-12-16 18:25:17)
+18:25:17 - DEBUG: Checking network connections...
+18:25:17 - DEBUG: Scanning network for connected devices...
+18:25:23 - DEBUG: Converting IP addresses to MAC addresses...
+18:25:23 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:25:23 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:25:23 - DEBUG: Raw MAC found: ee:b4:05:df:f7:d1
+18:25:23 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:25:23 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:25:23 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:25:31 - DEBUG: Raw MAC found: None
+18:25:31 - DEBUG: Raw MAC found: 72:98:7c:a5:d9:02
+18:25:31 - INFO: No necessary devices connected to network.
+18:25:31 - DEBUG: network_check = True
+18:25:31 - DEBUG: CameraCollection.is_active=True.
+18:25:31 - INFO: System is on.
+18:25:31 - INFO: Checking cameras for detected movement...
+18:25:31 - DEBUG: Checking camera 1 on process Process-1
+18:25:41 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:25:31, next run: 2020-12-16 18:25:41)
+18:25:41 - DEBUG: Checking network connections...
+18:25:41 - DEBUG: Scanning network for connected devices...
+18:25:59 - DEBUG: Converting IP addresses to MAC addresses...
+18:25:59 - DEBUG: Raw MAC found: 80:72:15:10:25:71
+18:25:59 - DEBUG: Raw MAC found: 20:47:ed:33:63:8a
+18:25:59 - DEBUG: Raw MAC found: ee:b4:05:df:f7:d1
+18:25:59 - DEBUG: Raw MAC found: f4:a9:97:90:b8:94
+18:25:59 - DEBUG: Raw MAC found: c8:85:50:00:42:ef
+18:25:59 - DEBUG: Raw MAC found: b0:fc:0d:be:10:ac
+18:26:00 - DEBUG: Raw MAC found: None
+18:26:00 - DEBUG: Raw MAC found: 72:98:7c:a5:d9:02
+18:26:00 - DEBUG: Raw MAC found: 8c:aa:b5:a2:85:4c
+18:26:00 - INFO: No necessary devices connected to network.
+18:26:00 - DEBUG: network_check = True
+18:26:00 - DEBUG: CameraCollection.is_active=True.
+18:26:00 - INFO: System is on.
+18:26:00 - INFO: Checking cameras for detected movement...
+18:26:00 - DEBUG: Checking camera 1 on process Process-1
+18:26:00 - INFO: Camera 1 detected movement, taking image...
+18:26:00 - DEBUG: Taking image with camera 1, IP address 192.168.0.16
+18:26:10 - INFO: Running job Every 10 seconds do state_check(<function check_time at 0x7f5be9f44a60>, <bound method MACHandler.check_network of <network_handler.MACHandler object at 0x7f5be7857978>>, <multiprocessing.queues.Queue object at 0x7f5be78570b8>) (last run: 2020-12-16 18:26:00, next run: 2020-12-16 18:26:10)
+18:26:10 - DEBUG: Checking network connections...
+18:26:10 - DEBUG: Scanning network for connected devices...

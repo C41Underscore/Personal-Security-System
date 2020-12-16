@@ -18,6 +18,7 @@ class ESP32CamInterface:
         self.id = cam_num
         self.ip_address = ip_address
         self.cam_socket = cam_socket
+        self.cam_socket.settimeout(5)
 
     def __str__(self):
         return "Camera: %d, IP address: %s" % (self.id, self.ip_address)
@@ -46,12 +47,23 @@ class ESP32CamInterface:
         logging.debug("Checking camera %d on process %s" % (self.id, current_process().name))
         data = self.cam_socket.recv(1024)
         if data.__len__() == 0:
-            logging.debug("No data obtained on camera %d" % self.id)
+            reconnection_soc = socket.socket()
+            logging.debug("No data obtained on camera %d, attempting to reconnect..." % self.id)
+            reconnection_soc.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+            host, port = ("0.0.0.0", 8080)
+            reconnection_soc.bind((host, port))
+            reconnection_soc.listen()
+            while True:
+                cam_sock, cam_addr = reconnection_soc.accept()
+                if cam_addr == self.ip_address:
+                    self.cam_socket = cam_sock
+                    self.cam_socket.settimeout(5)
+                    break
             return "", "Big Chungus"
         else:
             data = data.decode("utf-8")
-            logging.debug("Camera data obtained: %s" % data)
-            if "BITCH SPOTTED :0" in data:
+            # logging.debug("Camera data obtained: %s" % data)
+            if "1" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
             else:
@@ -73,14 +85,12 @@ class CameraCollection:
         connection_socket.bind((host, port))
         logging.debug("Listening for incoming requests...")
         connection_socket.listen()
-        while True:
+        while cur_no_cams < number_of_cams:
             cam_sock, cam_addr = connection_socket.accept()
             if cam_addr not in connected_ip_addresses:
                 cur_no_cams += 1
                 self.camera_interfaces.append(ESP32CamInterface(cur_no_cams, cam_addr[0], cam_sock))
                 logging.info("Camera connected to with IP address %s" % cam_addr[0])
-                if cur_no_cams == number_of_cams:
-                    break
         logging.debug("Closing listening socket.")
         connection_socket.close()
 
