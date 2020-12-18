@@ -18,7 +18,7 @@ class ESP32CamInterface:
         self.id = cam_num
         self.ip_address = ip_address
         self.cam_socket = cam_socket
-        self.cam_socket.settimeout(5)
+        self.cam_socket.settimeout(10)
 
     def __str__(self):
         return "Camera: %d, IP address: %s" % (self.id, self.ip_address)
@@ -31,43 +31,46 @@ class ESP32CamInterface:
                 image = Image.open(urllib.request.urlopen(ESP32CamInterface.template_url.substitute(
                     ip_address=self.ip_address,
                     image_type="cam-hi.jpg"
-                )))
+                ), timeout=30))
             else:
                 image = Image.open(urllib.request.urlopen(ESP32CamInterface.template_url.substitute(
                     ip_address=self.ip_address,
                     image_type="cam-lo.jpg"
-                )))
+                ), timeout=30))
             logging.debug("Image quality: %s" % ("High" if high_quality else "Low"))
         except (IncompleteRead, URLError) as e:
             logging.debug("Error whilst taking image: %s" % e)
             image = ""
+        except socket.timeout as e:
+            self.reconnect()
+            image = ""
         return image, current_time
 
+    def reconnect(self):
+        self.cam_socket = socket.socket()
+        logging.debug("No data obtained on camera %d, attempting to reconnect..." % self.id)
+        self.cam_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        host, port = ("0.0.0.0", 8080)
+        self.cam_socket.bind((host, port))
+        self.cam_socket.listen()
+        while True:
+            cam_sock, cam_addr = self.cam_socket.accept()
+            if cam_addr[0] == self.ip_address:
+                self.cam_socket = cam_sock
+                self.cam_socket.settimeout(10)
+                break
+
     def check_camera(self):
-        logging.debug("Checking camera %d on process %s" % (self.id, current_process().name))
-        data = self.cam_socket.recv(1024)
-        if data.__len__() == 0:
-            reconnection_soc = socket.socket()
-            logging.debug("No data obtained on camera %d, attempting to reconnect..." % self.id)
-            reconnection_soc.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-            host, port = ("0.0.0.0", 8080)
-            reconnection_soc.bind((host, port))
-            reconnection_soc.listen()
-            while True:
-                cam_sock, cam_addr = reconnection_soc.accept()
-                if cam_addr == self.ip_address:
-                    self.cam_socket = cam_sock
-                    self.cam_socket.settimeout(5)
-                    break
-            return "", "Big Chungus"
-        else:
-            data = data.decode("utf-8")
+        try:
+            logging.debug("Checking camera %d on process %s" % (self.id, current_process().name))
+            data = self.cam_socket.recv(1024).decode("utf-8")
             # logging.debug("Camera data obtained: %s" % data)
             if "1" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
-            else:
-                return "", "Big Chungus"
+        except socket.timeout as e:
+            self.reconnect()
+        return "", "Big Chungus"
 
 
 class CameraCollection:
@@ -116,6 +119,13 @@ class CameraCollection:
                         check_time += ".jpg"
                         check_image.save(check_time)
                         drive.upload(get_formatted_time(True), check_time)
+            else:
+                for camera in self.camera_interfaces:
+                    try:
+                        camera.cam_socket.sendall(b"9")
+                    except socket.error as e:
+                        print(e)
+                        camera.reconnect()
 
 
 if __name__ == "__main__":
