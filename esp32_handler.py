@@ -49,7 +49,7 @@ class ESP32CamInterface:
     def reconnect(self):
         self.cam_socket = socket.socket()
         logging.debug("No data obtained on camera %d, attempting to reconnect..." % self.id)
-        self.cam_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        self.cam_socket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # Issues with reconnecting sockets with multiple cameras - maybe something in the socket options??
         host, port = ("0.0.0.0", 8080)
         self.cam_socket.bind((host, port))
         self.cam_socket.listen()
@@ -59,6 +59,7 @@ class ESP32CamInterface:
                 self.cam_socket = cam_sock
                 self.cam_socket.settimeout(10)
                 break
+        logging.debug("Reconnection to %s was successful." % self.ip_address)
 
     def check_camera(self):
         try:
@@ -68,7 +69,7 @@ class ESP32CamInterface:
             if "1" in data:
                 logging.info("Camera %d detected movement, taking image..." % self.id)
                 return self.take_image(False)
-        except socket.timeout as e:
+        except (socket.timeout, ConnectionResetError) as e:
             self.reconnect()
         return "", "Big Chungus"
 
@@ -87,7 +88,7 @@ class CameraCollection:
         logging.debug("Binding socket to address %s, on socket %d." % (host, port))
         connection_socket.bind((host, port))
         logging.debug("Listening for incoming requests...")
-        connection_socket.listen()
+        connection_socket.listen(number_of_cams)
         while cur_no_cams < number_of_cams:
             cam_sock, cam_addr = connection_socket.accept()
             if cam_addr not in connected_ip_addresses:
