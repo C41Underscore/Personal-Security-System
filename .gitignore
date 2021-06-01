@@ -8,3 +8,5 @@ pyvenv.cfg
 google_credentials.txt
 *.log
 *.jpg
+src/*.class
+tests/*.class
