@@ -29,6 +29,7 @@ class BasicServerTest {
         {
             outs.get(i).print("Hello from test ");
             outs.get(i).println(i);
+            outs.get(i).flush();
         }
         for(int i = 0; i < 6; i++)
         {
