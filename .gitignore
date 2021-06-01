@@ -10,3 +10,4 @@ google_credentials.txt
 *.jpg
 src/*.class
 tests/*.class
+*.iml

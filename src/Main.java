@@ -24,12 +24,11 @@ class Main {
         {
             try
             {
-                Socket c = s.accept();
+                ex.submit(new CameraProtocol(s.accept()));
             } catch(IOException e)
             {
                 System.out.println("Error: " + e.getMessage());
             }
-            ex.submit(new CameraProtocol("wh0?"));
         }
     }
 }
