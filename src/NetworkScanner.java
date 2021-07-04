@@ -71,10 +71,28 @@ public class NetworkScanner
         pr = Runtime.getRuntime().exec(cmdPython.toString());
         pr.waitFor();
         buf = new BufferedReader((new InputStreamReader(pr.getInputStream())));
+        // Search for required addresses in found addresses
+        ArrayList<String> foundAddresses = new ArrayList<String>();
         while((line = buf.readLine()) != null)
         {
-            System.out.println(line);
+            foundAddresses.add(line);
         }
+        for(int i = 0; i < this.requiredAddresses.size(); i++)
+        {
+            for(int j = 0; j < foundAddresses.size(); j++)
+            {
+                if(this.requiredAddresses.get(i).compareTo(foundAddresses.get(j)) == 0 && i > 0)
+                {
+                    // If an address is found, swap it with the first, return true
+                    String temp = this.requiredAddresses.get(0);
+                    this.requiredAddresses.remove(0);
+                    this.requiredAddresses.add(0, this.requiredAddresses.get(i));
+                    this.requiredAddresses.add(i, temp);
+                    return true;
+                }
+            }
+        }
+        // If no addresses are found, return false
         return false;
     }
 }
