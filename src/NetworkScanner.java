@@ -11,8 +11,7 @@ public class NetworkScanner
     private ArrayList<String> requiredAddresses;
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        NetworkScanner ns = new NetworkScanner("src/convert_ip_to_mac.py",
-                "26:84:34:94:93:02");
+        NetworkScanner ns = new NetworkScanner("src/convert_ip_to_mac.py");
         ns.scan();
     }
 
