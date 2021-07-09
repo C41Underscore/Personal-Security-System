@@ -3,15 +3,38 @@ package src;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.*;
 import java.net.NetworkInterface;
+
+// TODO: Camera Code
+// TODO: Google Drive interface
+// TODO: Logging
+// TODO: Camera interface/ getting images
+// TODO: Email interface
 
 
 class Main {
     public static void main(String[] args) {
+        System.out.println("Starting server...");
         ServerSocket s = null;
         ExecutorService ex = null;
-        System.out.println("Starting server...");
+        NetworkScanner ns = new NetworkScanner("./mac_to_ip_converter.py", "funny chungus", "04:ed:33:2f:41:8f");
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                try
+                {
+                    ns.scan();
+                }
+                catch (IOException | InterruptedException e)
+                {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }, 0, 30000);
         try
         {
             s = new ServerSocket(8080);
@@ -25,7 +48,7 @@ class Main {
         {
             try
             {
-                ex.submit(new CameraProtocol(s.accept()));
+                ex.submit(new CameraProtocol(s.accept(), ns));
             } catch(IOException e)
             {
                 System.out.println("Error: " + e.getMessage());

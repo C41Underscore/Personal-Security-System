@@ -13,27 +13,11 @@ public class CameraProtocol extends Thread {
     private Socket cameraSocket = null;
     private BufferedReader in = null;
     private PrintWriter out = null;
+    private NetworkScanner ns = null;
 
-    public CameraProtocol(Socket cameraSocket)
+    public CameraProtocol(Socket cameraSocket, NetworkScanner ns)
     {
         this.cameraSocket = cameraSocket;
-        try
-        {
-            InetAddress ip = InetAddress.getLocalHost();
-            NetworkInterface network = NetworkInterface.getByInetAddress(ip);
-            byte[] mac = network.getHardwareAddress();
-            StringBuilder bobTheBuilder = new StringBuilder();
-            for(int i = 0; i < mac.length; i++)
-            {
-                bobTheBuilder.append(String.format(
-                        "%02X%s", mac[i],
-                        (i < mac.length - 1) ? "-" : ""));
-            }
-            System.out.println(bobTheBuilder.toString());
-        } catch(SocketException | UnknownHostException e)
-        {
-            System.out.println("Error: " + e.getMessage());
-        }
         try
         {
             this.in = new BufferedReader(new InputStreamReader(this.cameraSocket.getInputStream()));
@@ -47,6 +31,7 @@ public class CameraProtocol extends Thread {
         bobTheBuilder.append(cameraSocket.getInetAddress().toString());
         bobTheBuilder.append("/cam-hi.jpg");
         this.URL = bobTheBuilder.toString();
+        this.ns = ns;
     }
 
     public void run()
@@ -54,14 +39,23 @@ public class CameraProtocol extends Thread {
         String receivedFromCamera = "";
         try
         {
-            Thread.sleep(1000);
             while((receivedFromCamera = in.readLine()) != null)
             {
                 System.out.println(receivedFromCamera);
+                if(receivedFromCamera.contains("1"))
+                {
+                    synchronized (ns)
+                    {
+                        if(!ns.requiredAddressPresent())
+                        {
+                            // take picture
+                        }
+                    }
+                }
             }
             this.in.close();
             this.out.close();
-        } catch(IOException | InterruptedException e)
+        } catch(IOException e)
         {
             System.out.println("Error: " + e.getMessage());
         }

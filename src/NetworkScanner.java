@@ -9,11 +9,7 @@ public class NetworkScanner
     private final String cmd = "nmap -sn 192.168.0.0/24";
     private String pathToMACConverter;
     private ArrayList<String> requiredAddresses;
-
-    public static void main(String[] args) throws IOException, InterruptedException {
-        NetworkScanner ns = new NetworkScanner("src/convert_ip_to_mac.py");
-        ns.scan();
-    }
+    private Boolean status = false;
 
     public NetworkScanner(String pathToMACConverter, String...requiredAddresses)
     {
@@ -21,6 +17,11 @@ public class NetworkScanner
         this.requiredAddresses = new ArrayList<String>();
         this.requiredAddresses.addAll(Arrays.asList(requiredAddresses));
         this.generateConverter();
+    }
+
+    public Boolean requiredAddressPresent()
+    {
+        return this.status;
     }
 
     // create the python3 script to convert ip addresses to MAC addresses
@@ -43,7 +44,8 @@ public class NetworkScanner
 
     // returns true if a specified MAC address is present on the subnetwork
     // returns false if no specified MAC addresses are on the subnetwork
-    public Boolean scan() throws InterruptedException, IOException {
+    public void scan() throws InterruptedException, IOException {
+        System.out.println("Scanning network...");
         Process pr = Runtime.getRuntime().exec(this.cmd);
         pr.waitFor();
         BufferedReader buf = new BufferedReader((new InputStreamReader(pr.getInputStream())));
@@ -81,18 +83,28 @@ public class NetworkScanner
         {
             for(int j = 0; j < foundAddresses.size(); j++)
             {
-                if(this.requiredAddresses.get(i).compareTo(foundAddresses.get(j)) == 0 && i > 0)
+                System.out.println(foundAddresses.get(j));
+                if(this.requiredAddresses.get(i).compareTo(foundAddresses.get(j)) == 0)
                 {
                     // If an address is found, swap it with the first, return true
                     String temp = this.requiredAddresses.get(0);
-                    this.requiredAddresses.remove(0);
-                    this.requiredAddresses.add(0, this.requiredAddresses.get(i));
+                    String foundAddress = this.requiredAddresses.get(i);
+                    this.requiredAddresses.remove(i);
+                    if(this.requiredAddresses.size() > 0)
+                    {
+                        this.requiredAddresses.add(0, foundAddress);
+                    }
+                    else
+                    {
+                        this.requiredAddresses.add(foundAddress);
+                    }
                     this.requiredAddresses.add(i, temp);
-                    return true;
+                    this.status = true;
+                    return;
                 }
             }
         }
         // If no addresses are found, return false
-        return false;
+        this.status = false;
     }
 }
