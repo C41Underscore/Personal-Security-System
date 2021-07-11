@@ -31,6 +31,7 @@ public class CameraProtocol extends Thread {
         bobTheBuilder.append(cameraSocket.getInetAddress().toString());
         bobTheBuilder.append("/cam-hi.jpg");
         this.URL = bobTheBuilder.toString();
+        System.out.println("New camera connected: " + this.URL);
         this.ns = ns;
     }
 
@@ -39,23 +40,25 @@ public class CameraProtocol extends Thread {
         String receivedFromCamera = "";
         try
         {
+            Thread.sleep(1000);
             while((receivedFromCamera = in.readLine()) != null)
             {
-                System.out.println(receivedFromCamera);
                 if(receivedFromCamera.contains("1"))
                 {
                     synchronized (ns)
                     {
                         if(!ns.requiredAddressPresent())
                         {
-                            // take picture
+                            System.out.println("Take picture! - " + this.URL);
                         }
                     }
+
                 }
             }
             this.in.close();
             this.out.close();
-        } catch(IOException e)
+            this.cameraSocket.close();
+        } catch(IOException | InterruptedException e)
         {
             System.out.println("Error: " + e.getMessage());
         }

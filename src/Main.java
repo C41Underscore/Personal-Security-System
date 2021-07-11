@@ -20,7 +20,7 @@ class Main {
         System.out.println("Starting server...");
         ServerSocket s = null;
         ExecutorService ex = null;
-        NetworkScanner ns = new NetworkScanner("./mac_to_ip_converter.py", "funny chungus", "04:ed:33:2f:41:8f");
+        NetworkScanner ns = new NetworkScanner("./mac_to_ip_converter.py", "3e:f9:ff:03:7b:fe");
         Timer t = new Timer();
         t.schedule(new TimerTask() {
             @Override
@@ -34,7 +34,7 @@ class Main {
                     System.out.println(e.getMessage());
                 }
             }
-        }, 0, 30000);
+        }, 0, 20000);
         try
         {
             s = new ServerSocket(8080);

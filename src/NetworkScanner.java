@@ -83,7 +83,6 @@ public class NetworkScanner
         {
             for(int j = 0; j < foundAddresses.size(); j++)
             {
-                System.out.println(foundAddresses.get(j));
                 if(this.requiredAddresses.get(i).compareTo(foundAddresses.get(j)) == 0)
                 {
                     // If an address is found, swap it with the first, return true
