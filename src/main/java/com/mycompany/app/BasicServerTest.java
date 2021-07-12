@@ -1,4 +1,4 @@
-package tests;
+package com.mycompany.app;
 
 import java.util.ArrayList;
 import java.io.IOException;

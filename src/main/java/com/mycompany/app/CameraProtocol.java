@@ -1,15 +1,18 @@
-package src;
+package com.mycompany.app;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.*;
-import java.util.Arrays;
+import java.net.MalformedURLException;
+import java.net.Socket;
+import java.net.URL;
 
 
 public class CameraProtocol extends Thread {
-    private String URL = null;
+    private URL source = null;
     private Socket cameraSocket = null;
     private BufferedReader in = null;
     private PrintWriter out = null;
@@ -30,8 +33,14 @@ public class CameraProtocol extends Thread {
         bobTheBuilder.append("http:/");
         bobTheBuilder.append(cameraSocket.getInetAddress().toString());
         bobTheBuilder.append("/cam-hi.jpg");
-        this.URL = bobTheBuilder.toString();
-        System.out.println("New camera connected: " + this.URL);
+        try
+        {
+            this.source = new URL(bobTheBuilder.toString());
+        } catch(MalformedURLException e)
+        {
+            System.out.println("Error: " + e.getMessage());
+        }
+        System.out.println("New camera connected: " + this.source);
         this.ns = ns;
     }
 
@@ -40,7 +49,7 @@ public class CameraProtocol extends Thread {
         String receivedFromCamera = "";
         try
         {
-            Thread.sleep(1000);
+            Thread.sleep(500);
             while((receivedFromCamera = in.readLine()) != null)
             {
                 if(receivedFromCamera.contains("1"))
@@ -49,7 +58,11 @@ public class CameraProtocol extends Thread {
                     {
                         if(!ns.requiredAddressPresent())
                         {
-                            System.out.println("Take picture! - " + this.URL);
+                            // Replace this with HTTP request to camera
+                            Image image = ImageIO.read(this.source);
+                            System.out.println("Image acquired: " + image);
+                            // Handle image
+                            // Place it into queue to be uploaded to google drive
                         }
                     }
 

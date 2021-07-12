@@ -1,4 +1,4 @@
-package src;
+package com.mycompany.app;
 
 import java.io.*;
 import java.util.ArrayList;
