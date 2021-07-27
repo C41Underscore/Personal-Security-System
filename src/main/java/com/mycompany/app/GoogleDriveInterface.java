@@ -42,19 +42,56 @@ public class GoogleDriveInterface {
     private Drive service = null;
     private Queue<String> imageQueue = new LinkedList<String>();
     private String imageQueuePath = null;
+    private File currentFolder = null;
+    private String currentFormattedDate = null;
 
     public String getImageQueuePath()
     {
         return this.imageQueuePath;
     }
 
+    private void updateFolder(String name) throws IOException
+    {
+        // Search for folder with given name
+        String pageToken = null;
+        do {
+            FileList result = service.files().list()
+                    .setQ("mimeType='application/vnd.google-apps.folder'")
+                    .setQ("trashed=false")
+                    .setSpaces("drive")
+                    .setFields("nextPageToken, files(id, name)")
+                    .setPageToken(pageToken)
+                    .execute();
+            for(File file : result.getFiles())
+            {
+                if(file.getName().compareTo(name) == 0)
+                {
+                    this.currentFolder = file;
+                    return;
+                }
+            }
+            pageToken = result.getNextPageToken();
+        } while(pageToken != null);
+        // Folder doesn't exist, create a new folder for date
+        File folderMetadata = new File();
+        folderMetadata.setName(name);
+        folderMetadata.setMimeType("application/vnd.google-apps.folder");
+        File file = service.files().create(folderMetadata).setFields("id").execute();
+        System.out.println("Folder ID " + file.getId() + " uploaded");
+        this.currentFolder = file;
+        this.currentFormattedDate = name;
+    }
+
     private void uploadFile(String parent, String child)
     {
         try
         {
+            this.updateFolder(parent);
+            // Create image file
             File fileMetadata = new File();
             fileMetadata.setName(child);
-            java.io.File filePath = new java.io.File(this.imageQueuePath + parent, child);
+            fileMetadata.setParents(Collections.singletonList(this.currentFolder.getId()));
+            java.io.File filePath = new java.io.File(this.imageQueuePath + "/" + parent + "/" + child);
             FileContent mediaContent = new FileContent("image/jpeg", filePath);
             File file = service.files().create(fileMetadata, mediaContent)
                     .setFields("id").execute();
@@ -76,16 +113,21 @@ public class GoogleDriveInterface {
             {
                 try
                 {
+                    int standardUpload = 0;
                     nextImage = this.imageQueue.remove();
                     for(int j = nextImage.length() - 1; j > 0; j--)
                     {
                         if(nextImage.charAt(j) == '/')
                         {
                             this.uploadFile(nextImage.substring(0, j), nextImage.substring(j + 1));
-                            continue;
+                            standardUpload = 1;
+                            break;
                         }
                     }
-                    this.uploadFile("", nextImage);
+                    if(standardUpload == 0)
+                    {
+                        this.uploadFile("", nextImage);
+                    }
                 }
                 catch (NoSuchElementException e)
                 {

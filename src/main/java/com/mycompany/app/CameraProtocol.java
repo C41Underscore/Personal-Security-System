@@ -69,14 +69,18 @@ public class CameraProtocol extends Thread {
                             // Handle image
                             StringBuilder imageFilepath = new StringBuilder();
                             ldt = LocalDateTime.now();
-                            String filename = ldt.format(dateFormatter) + "/" + ldt.format(timeFormatter) + ".jpg";
-                            imageFilepath.append(this.gdi.getImageQueuePath())
-                                    .append(filename);
-                            ImageIO.write(image, "jpg", new File(imageFilepath.toString()));
+                            String fileDateAndTime = ldt.format(dateFormatter);
+                            String absoluteFilepath = this.gdi.getImageQueuePath() + fileDateAndTime;
+                            if(!new File(absoluteFilepath).exists())
+                            {
+                                new File(absoluteFilepath).mkdirs();
+                            }
+                            imageFilepath.append(fileDateAndTime).append("/").append(ldt.format(timeFormatter));
+                            ImageIO.write(image, "jpg", new File(this.gdi.getImageQueuePath() + imageFilepath.toString()));
                             // Place it into queue to be uploaded to google drive
                             synchronized (this.gdi)
                             {
-                                this.gdi.queueImage(filename);
+                                this.gdi.queueImage(imageFilepath.toString());
                             }
                         }
                     }

@@ -36,6 +36,12 @@ class Main {
                 }
             }
         }, 0, 20000);
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                gdi.reduceQueue();
+            }
+        }, 0, 10000);
         try
         {
             s = new ServerSocket(8080);
