@@ -2,13 +2,13 @@ package com.mycompany.app;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.Socket;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 
 public class CameraProtocol extends Thread {
@@ -17,8 +17,9 @@ public class CameraProtocol extends Thread {
     private BufferedReader in = null;
     private PrintWriter out = null;
     private NetworkScanner ns = null;
+    private GoogleDriveInterface gdi = null;
 
-    public CameraProtocol(Socket cameraSocket, NetworkScanner ns)
+    public CameraProtocol(Socket cameraSocket, NetworkScanner ns, GoogleDriveInterface gdi)
     {
         this.cameraSocket = cameraSocket;
         try
@@ -42,10 +43,14 @@ public class CameraProtocol extends Thread {
         }
         System.out.println("New camera connected: " + this.source);
         this.ns = ns;
+        this.gdi = gdi;
     }
 
     public void run()
     {
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalDateTime ldt = null;
         String receivedFromCamera = "";
         try
         {
@@ -59,10 +64,20 @@ public class CameraProtocol extends Thread {
                         if(!ns.requiredAddressPresent())
                         {
                             // Replace this with HTTP request to camera
-                            Image image = ImageIO.read(this.source);
+                            BufferedImage image = ImageIO.read(this.source);
                             System.out.println("Image acquired: " + image);
                             // Handle image
+                            StringBuilder imageFilepath = new StringBuilder();
+                            ldt = LocalDateTime.now();
+                            String filename = ldt.format(dateFormatter) + "/" + ldt.format(timeFormatter) + ".jpg";
+                            imageFilepath.append(this.gdi.getImageQueuePath())
+                                    .append(filename);
+                            ImageIO.write(image, "jpg", new File(imageFilepath.toString()));
                             // Place it into queue to be uploaded to google drive
+                            synchronized (this.gdi)
+                            {
+                                this.gdi.queueImage(filename);
+                            }
                         }
                     }
 
