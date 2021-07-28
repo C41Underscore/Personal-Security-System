@@ -44,6 +44,7 @@ public class GoogleDriveInterface {
     private String imageQueuePath = null;
     private File currentFolder = null;
     private String currentFormattedDate = null;
+    private FileList folderSearchResults = null;
 
     public String getImageQueuePath()
     {
@@ -52,34 +53,42 @@ public class GoogleDriveInterface {
 
     private void updateFolder(String name) throws IOException
     {
-        // Search for folder with given name
-        String pageToken = null;
-        do {
-            FileList result = service.files().list()
-                    .setQ("mimeType='application/vnd.google-apps.folder'")
-                    .setQ("trashed=false")
-                    .setSpaces("drive")
-                    .setFields("nextPageToken, files(id, name)")
-                    .setPageToken(pageToken)
-                    .execute();
-            for(File file : result.getFiles())
-            {
-                if(file.getName().compareTo(name) == 0)
+        // Triggers on boot/ reboot
+        if(this.currentFormattedDate == null)
+        {
+            this.currentFormattedDate = name;
+            String pageToken = null;
+            do {
+                this.folderSearchResults = service.files().list()
+                        .setQ("mimeType='application/vnd.google-apps.folder'")
+                        .setQ("trashed=false")
+                        .setSpaces("drive")
+                        .setFields("nextPageToken, files(id, name)")
+                        .setPageToken(pageToken)
+                        .execute();
+                for(File file : this.folderSearchResults.getFiles())
                 {
-                    this.currentFolder = file;
-                    return;
+                    if(file.getName().compareTo(name) == 0)
+                    {
+                        this.currentFolder = file;
+                        return;
+                    }
                 }
-            }
-            pageToken = result.getNextPageToken();
-        } while(pageToken != null);
-        // Folder doesn't exist, create a new folder for date
-        File folderMetadata = new File();
-        folderMetadata.setName(name);
-        folderMetadata.setMimeType("application/vnd.google-apps.folder");
-        File file = service.files().create(folderMetadata).setFields("id").execute();
-        System.out.println("Folder ID " + file.getId() + " uploaded");
-        this.currentFolder = file;
-        this.currentFormattedDate = name;
+                pageToken = this.folderSearchResults.getNextPageToken();
+            } while(pageToken != null);
+        }
+        // Search for folder with given name
+        if(this.currentFormattedDate.compareTo(name) != 0 || this.currentFolder == null)
+        {
+            // Folder doesn't exist, create a new folder for date
+            this.currentFormattedDate = name;
+            File folderMetadata = new File();
+            folderMetadata.setName(name);
+            folderMetadata.setMimeType("application/vnd.google-apps.folder");
+            File file = service.files().create(folderMetadata).setFields("id").execute();
+            System.out.println("Folder ID " + file.getId() + " uploaded");
+            this.currentFolder = file;
+        }
     }
 
     private void uploadFile(String parent, String child)

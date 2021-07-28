@@ -38,7 +38,8 @@ class Main {
         }, 0, 20000);
         t.schedule(new TimerTask() {
             @Override
-            public void run() {
+            public void run()
+            {
                 gdi.reduceQueue();
             }
         }, 0, 10000);

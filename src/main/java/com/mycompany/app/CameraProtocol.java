@@ -51,13 +51,14 @@ public class CameraProtocol extends Thread {
         DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalDateTime ldt = null;
-        String receivedFromCamera = "";
+        char[] receivedFromCamera = new char[512];
         try
         {
             Thread.sleep(500);
-            while((receivedFromCamera = in.readLine()) != null)
+            while(in.read(receivedFromCamera, 0, 512) != -1)
             {
-                if(receivedFromCamera.contains("1"))
+                String charData = new String(receivedFromCamera);
+                if(charData.contains("1"))
                 {
                     synchronized (ns)
                     {
@@ -65,7 +66,7 @@ public class CameraProtocol extends Thread {
                         {
                             // Replace this with HTTP request to camera
                             BufferedImage image = ImageIO.read(this.source);
-                            System.out.println("Image acquired: " + image);
+                            System.out.println("Image acquired from " + this.source);
                             // Handle image
                             StringBuilder imageFilepath = new StringBuilder();
                             ldt = LocalDateTime.now();
